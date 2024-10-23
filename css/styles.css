@@ -162,7 +162,7 @@ main h1 {
   width: 100%;
   overflow: hidden;
 
-  mask-image: linear-gradient(
+  -webkit-mask-image: linear-gradient(
     to right,
     transparent,
     rgba(0, 0, 0, 1) 20%,
@@ -170,7 +170,7 @@ main h1 {
     transparent
   );
 
-  -webkit-mask-image: linear-gradient(
+  mask-image: linear-gradient(
     to right,
     transparent,
     rgba(0, 0, 0, 1) 20%,
