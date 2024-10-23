@@ -49,25 +49,29 @@ header .logo img {
   object-fit: contain;
 }
 
-header nav {
+header nav ul {
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
   font: 1em "Inter", sans-serif;
   gap: 20px;
   top: 0;
-  overflow: hidden;
+  overflow: visible;
   font-weight: 400;
+  list-style: none;
+  padding: 0;
 }
-
-header nav a {
-  text-decoration: none;
+header nav ul li {
+  display: inline-block;
   color: var(--secondary-color);
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-header nav a:hover {
+header nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header nav ul li:hover {
   color: var(--fifth-color);
   transform: scale(1.1);
 }
@@ -208,4 +212,28 @@ main h1 {
   100% {
     transform: translateX(-100%);
   }
+}
+
+.title {
+  font: 2.5em "Inter", sans-serif;
+  text-align: center;
+  font-weight: 600;
+  padding: 0.5em 0 0 0;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.paragraph {
+  font: 1.2em "Inter", sans-serif;
+  text-align: center;
+  font-weight: 300;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--grey-color);
+}
+
+#overview {
+  margin: 7em auto auto auto;
 }
