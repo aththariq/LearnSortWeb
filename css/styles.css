@@ -90,8 +90,8 @@ main h1 {
   font: 5em "Inter", sans-serif;
   text-align: center;
   font-weight: 600;
-  padding: 0.5em 0 0 0; 
-  margin-top: 0; 
+  padding: 0.5em 0 0 0;
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
 }
@@ -156,4 +156,53 @@ main h1 {
   margin-left: auto;
   margin-right: auto;
   color: var(--grey-color);
+}
+
+.scroll-container {
+  width: 100%;
+  overflow: hidden;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    transparent
+  );
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    transparent
+  );
+}
+
+.scrolling-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 70px;
+  animation: scroll 60s linear infinite;
+  overflow: visible;
+}
+
+.scrolling-wrapper img {
+  height: auto;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.scrolling-wrapper img:hover {
+  animation-play-state: paused;
+  transform: scale(1.2);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }

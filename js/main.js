@@ -7,3 +7,18 @@ window.addEventListener("scroll", function () {
   }
 });
 
+const scrollingWrapper = document.querySelector(".scrolling-wrapper");
+const images = Array.from(scrollingWrapper.children);
+
+function duplicateImages() {
+  const totalWidth = scrollingWrapper.scrollWidth;
+
+  while (scrollingWrapper.scrollWidth < totalWidth * 2) {
+    images.forEach((img) => {
+      const clone = img.cloneNode(true);
+      scrollingWrapper.appendChild(clone);
+    });
+  }
+}
+
+duplicateImages();
