@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 748.17 125.53">
   <defs>
     <style>
       .cls-1, .cls-2, .cls-3 {
@@ -29,10 +29,10 @@
       }
     </style>
   </defs>
-  <text class="cls-4" transform="translate(307.49 601.02)"><tspan x="0" y="0">LearnSo</tspan><tspan class="cls-5" x="500.54" y="0">r</tspan><tspan x="555.08" y="0">t</tspan></text>
+  <text class="cls-4" transform="translate(147.49 123.89)"><tspan x="0" y="0">LearnSo</tspan><tspan class="cls-5" x="500.54" y="0">r</tspan><tspan x="555.08" y="0">t</tspan></text>
   <g>
-    <rect class="cls-2" x="160.01" y="477.12" width="62.88" height="125.53"/>
-    <rect class="cls-1" x="191.44" y="508.34" width="62.88" height="62.88"/>
-    <rect class="cls-3" x="222.88" y="539.78" width="62.88" height="62.88"/>
+    <rect class="cls-2" width="62.88" height="125.53"/>
+    <rect class="cls-1" x="31.44" y="31.21" width="62.88" height="62.88"/>
+    <rect class="cls-3" x="62.88" y="62.65" width="62.88" height="62.88"/>
   </g>
 </svg>

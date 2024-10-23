@@ -1,71 +1,114 @@
-/* Gaya dasar untuk header */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-color: #0a1944;
+  --secondary-color: #3c4f6d;
+  --third-color: #a5b5c4;
+  --fourth-color: #d9d8dd;
+  --fifth-color: #0d0d0d;
+  --background-color: #f6f7f2;
+  --text-color: #333333;
+  --grey-color: #90a2b6;
+}
+html {
+  background-color: var(--background-color);
+}
+
 header {
-  display: flex;
+  background-color: var(--background-color);
   justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #f4f4f4;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Gaya untuk logo */
-header .Logo {
-  height: 50px; /* Atur ukuran logo */
-  cursor: pointer; /* Menunjukkan bahwa logo bisa diklik */
-}
-
-/* Gaya untuk navigasi */
-header nav {
+  padding: 5px 10px;
   display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+header .logo img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+header nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: 1em "Inter", sans-serif;
   gap: 20px;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  font-weight: 400;
 }
 
 header nav a {
   text-decoration: none;
-  font-size: 16px;
-  color: #333;
-  transition: color 0.3s ease;
+  color: var(--secondary-color);
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 header nav a:hover {
-  color: #007bff; /* Warna ketika tautan di-hover */
+  color: var(--fifth-color);
+  transform: scale(1.1);
 }
 
-/* Gaya untuk tombol */
-header button {
-  background-color: #007bff;
-  color: white;
-  border: none;
+#GetStarted {
+  background-color: var(--primary-color);
+  color: var(--background-color);
   padding: 10px 20px;
-  margin-left: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
+  border-radius: 10px;
+  font: 15px "Inter", sans-serif;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover efek pada tombol */
-header button:hover {
-  background-color: #0056b3;
+#GetStarted:hover {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  transform: scale(1.1);
 }
 
-/* Responsif untuk mobile (kurangi ukuran elemen) */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+main h1 {
+  font: 5em "Inter", sans-serif;
+  text-align: center;
+  font-weight: 600;
+  padding: 0px 4em;
+  margin-bottom: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  header nav {
-    margin-top: 10px;
-  }
+#description-h1 {
+  font: 1.7em "Inter", sans-serif;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 300;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--grey-color);
+}
 
-  header button {
-    margin-top: 10px;
-    width: 100%;
-  }
+#startlearning-button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font: 15px "Inter", sans-serif;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  position: relative;
+}
 
-  header .Logo {
-    height: 40px; /* Ukuran logo lebih kecil pada mobile */
-  }
+#startlearning-button::after {
+  content: 'arrow_forward';
+  font-family: 'Material Symbols Rounded';
+  font-size: 18px;
+  margin-left: 8px;
+  vertical-align: middle;
 }
