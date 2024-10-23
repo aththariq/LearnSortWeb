@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 791.44 144.96">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-1, .cls-3 {
+        fill: #0a1a45;
+      }
+
+      .cls-4 {
+        letter-spacing: .02em;
+      }
+
+      .cls-2 {
+        fill: #3b4e6b;
+        mix-blend-mode: exclusion;
+      }
+
+      .cls-3 {
+        font-family: Inter-ExtraBold, Inter;
+        font-size: 122.29px;
+        font-weight: 700;
+      }
+
+      .cls-5 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-6 {
+        isolation: isolate;
+      }
+    </style>
+  </defs>
+  <g class="cls-6">
+    <g id="Layer_1" data-name="Layer 1">
+      <text class="cls-3" transform="translate(149.15 115.43)"><tspan x="0" y="0">Me</tspan><tspan class="cls-5" x="186.65" y="0">r</tspan><tspan x="234.68" y="0">geSo</tspan><tspan class="cls-4" x="543.36" y="0">r</tspan><tspan x="597.91" y="0">t</tspan></text>
+      <rect class="cls-1" x="-1" y="0" width="98.37" height="98.37" rx="11.99" ry="11.99"/>
+      <rect class="cls-2" x="36.19" y="35.06" width="98.37" height="98.37" rx="11.99" ry="11.99"/>
+    </g>
+  </g>
+</svg>

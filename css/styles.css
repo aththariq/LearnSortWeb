@@ -10,17 +10,34 @@
   --text-color: #333333;
   --grey-color: #90a2b6;
 }
-html {
+main {
   background-color: var(--background-color);
 }
-
+body,
+header,
+main {
+  margin: 0;
+  padding: 0;
+}
 header {
   background-color: var(--background-color);
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 15px 2em;
   display: flex;
   align-items: center;
   flex-direction: row;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, padding 0.3s ease,
+    box-shadow 0.3s ease;
+}
+header.scrolled {
+  background-color: #ffffff !important;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, padding 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 header .logo img {
@@ -36,7 +53,6 @@ header nav {
   align-items: center;
   font: 1em "Inter", sans-serif;
   gap: 20px;
-  position: sticky;
   top: 0;
   overflow: hidden;
   font-weight: 400;
@@ -61,6 +77,7 @@ header nav a:hover {
   font: 15px "Inter", sans-serif;
   border: none;
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
 }
 
 #GetStarted:hover {
@@ -73,9 +90,8 @@ main h1 {
   font: 5em "Inter", sans-serif;
   text-align: center;
   font-weight: 600;
-  padding: 0px 4em;
-  margin-bottom: 20px;
-  max-width: 80%;
+  padding: 0.5em 0 0 0; 
+  margin-top: 0; 
   margin-left: auto;
   margin-right: auto;
 }
@@ -103,12 +119,41 @@ main h1 {
   margin: 20px auto;
   text-align: center;
   position: relative;
+  cursor: pointer;
 }
 
 #startlearning-button::after {
-  content: 'arrow_forward';
-  font-family: 'Material Symbols Rounded';
+  content: "arrow_forward";
+  font-family: "Material Symbols Rounded";
   font-size: 18px;
   margin-left: 8px;
   vertical-align: middle;
+}
+
+#startlearning-button:hover {
+  transform: translateY(-5px) scale(1.05);
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+}
+
+#contoh-gambar {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+  max-width: 100%;
+  height: auto;
+  width: 60%;
+  margin: 50px auto;
+}
+
+.desc {
+  font: 1.2em "Inter", sans-serif;
+  text-align: center;
+  font-weight: 300;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--grey-color);
 }
