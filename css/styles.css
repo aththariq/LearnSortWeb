@@ -1,0 +1,71 @@
+/* Gaya dasar untuk header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f4f4f4;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gaya untuk logo */
+header .Logo {
+  height: 50px; /* Atur ukuran logo */
+  cursor: pointer; /* Menunjukkan bahwa logo bisa diklik */
+}
+
+/* Gaya untuk navigasi */
+header nav {
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover {
+  color: #007bff; /* Warna ketika tautan di-hover */
+}
+
+/* Gaya untuk tombol */
+header button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+/* Hover efek pada tombol */
+header button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsif untuk mobile (kurangi ukuran elemen) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  header nav {
+    margin-top: 10px;
+  }
+
+  header button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  header .Logo {
+    height: 40px; /* Ukuran logo lebih kecil pada mobile */
+  }
+}
