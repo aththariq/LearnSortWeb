@@ -10,6 +10,9 @@
   --text-color: #333333;
   --grey-color: #90a2b6;
 }
+html {
+  scroll-behavior: smooth;
+}
 main {
   background-color: var(--background-color);
 }
