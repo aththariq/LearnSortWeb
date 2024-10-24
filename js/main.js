@@ -138,3 +138,9 @@ document.addEventListener("DOMContentLoaded", function () {
 document.getElementById("GetStarted").addEventListener("click", function () {
   window.location.href = "login.html";
 });
+
+document
+  .getElementsByClassName("sign-in-btn")
+  .addEventListener("click", function () {
+    window.location.href = "main-page.html";
+  });

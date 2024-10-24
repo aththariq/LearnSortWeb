@@ -186,7 +186,7 @@ header nav ul li:hover {
 
 h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #0a1944;
   text-align: left;
 }
@@ -195,6 +195,7 @@ p {
   font-size: 1rem;
   color: #333;
   text-align: left;
+  margin-bottom: 30px;
 }
 
 p a {
@@ -209,7 +210,7 @@ p a:hover {
 .google-sign-in {
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  padding: 10px 20px;
+  padding: 5px 20px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -220,6 +221,11 @@ p a:hover {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  overflow: visible;
+}
+#google-logo {
+  width: 30px;
+  margin: 0;
 }
 
 .google-sign-in:hover {
