@@ -11,7 +11,10 @@
   --grey-color: #90a2b6;
 }
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+body {
+  overflow-y: scroll;
 }
 main {
   background-color: var(--background-color);
@@ -22,6 +25,7 @@ main {
   margin: 0;
   padding: 0;
 }
+
 header {
   background-color: var(--background-color);
   justify-content: space-between;
@@ -237,6 +241,7 @@ main h1 {
 
 .section {
   margin: 4em auto auto auto;
+  scroll-margin-top: 50px;
 }
 
 .steps-container {
@@ -262,15 +267,15 @@ main h1 {
 }
 
 .step:nth-child(1) {
-  transition-delay: 0s; 
+  transition-delay: 0s;
 }
 
 .step:nth-child(2) {
-  transition-delay: 0.3s; 
+  transition-delay: 0.3s;
 }
 
 .step:nth-child(3) {
-  transition-delay: 0.6s; 
+  transition-delay: 0.6s;
 }
 
 .step.show {
@@ -391,6 +396,18 @@ main h1 {
   max-width: 600px;
   color: #d0d0d0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  opacity: 0;
+  transform: scale(0.95);
+  filter: blur(10px); /* Awalnya blur */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out,
+    filter 0.6s ease-out;
+}
+
+.creator-memo.show {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
 }
 
 .memo-header {
