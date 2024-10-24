@@ -134,3 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   observer.observe(creatorMemo);
 });
+
+document.getElementById("GetStarted").addEventListener("click", function () {
+  window.location.href = "login.html";
+});

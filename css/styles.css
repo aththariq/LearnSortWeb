@@ -89,6 +89,7 @@ header nav ul li:hover {
   border: none;
   transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
 }
 
 #GetStarted:hover {
@@ -304,7 +305,8 @@ main h1 {
 .step-content p {
   font-size: 1rem;
   margin: 0;
-  color: #666;
+  color: #afafaf;
+  font-weight: 350;
 }
 
 .faq-container {
@@ -541,7 +543,7 @@ main h1 {
   color: white;
   text-decoration: none;
   transition: transform 0.3s ease, color 0.3s ease;
-  font-size: 1.5em; /* Increase the icon size */
+  font-size: 1.5em;
 }
 
 .fa:hover {

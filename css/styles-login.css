@@ -1,0 +1,323 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary-color: #0a1944;
+  --secondary-color: #3c4f6d;
+  --third-color: #a5b5c4;
+  --fourth-color: #d9d8dd;
+  --fifth-color: #0d0d0d;
+  --background-color: #f6f7f2;
+  --text-color: #333333;
+  --grey-color: #90a2b6;
+}
+html {
+  scroll-behavior: auto;
+}
+body {
+  overflow-y: scroll;
+}
+main {
+  background-color: var(--background-color);
+}
+body,
+header,
+main {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var(--background-color);
+  justify-content: space-between;
+  padding: 15px 2em;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease, padding 0.3s ease,
+    box-shadow 0.3s ease;
+}
+header.scrolled {
+  background-color: #ffffff !important;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, padding 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+header .logo img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+header nav ul {
+  flex: 1;
+  display: flex;
+  font: 1em "Inter", sans-serif;
+  gap: 20px;
+  top: 0;
+  overflow: visible;
+  font-weight: 400;
+  list-style: none;
+  padding: 0;
+}
+header nav ul li {
+  display: inline-block;
+  color: var(--secondary-color);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header nav ul li:hover {
+  color: var(--fifth-color);
+  transform: scale(1.1);
+}
+
+#GetStarted {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font: 15px "Inter", sans-serif;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#GetStarted:hover {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  transform: scale(1.1);
+}
+
+.footer {
+  background-color: #1e1e1e;
+  color: #d0d0d0;
+  padding: 40px 0;
+  text-align: center;
+  font: 1rem "Inter", sans-serif;
+  font-weight: 200;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-links a {
+  color: #d0d0d0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #007bff;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-socials a {
+  display: inline-block;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: #888888;
+  margin-top: 10px;
+}
+
+
+.footer .fa {
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 1.5em;
+}
+
+.footer .fa:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  padding: 0 auto;
+  margin-top: -50px;
+  margin-bottom: 30px;
+}
+
+.login-container {
+  background-color: none;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #0a1944;
+  text-align: left;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
+  text-align: left;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
+
+.google-sign-in {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.google-sign-in:hover {
+  background-color: #f0f0f0;
+}
+
+.google-sign-in img {
+  width: 20px;
+  height: auto;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.divider hr {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #dddddd;
+}
+
+.divider span {
+  font-size: 1rem;
+  color: #888888;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #dddddd;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.forgot-password {
+  text-align: right;
+  display: block;
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.sign-in-btn {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sign-in-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.terms {
+  font-size: 0.8rem;
+  color: #888888;
+  text-align: left;
+}
+
+.terms a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    padding: 20px;
+  }
+}
