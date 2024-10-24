@@ -52,6 +52,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <header>
@@ -79,30 +80,39 @@
 
     <main>
       <section class="content-wrapper">
-        <!-- Container Welcome Back -->
         <div class="welcome-section">
           <h1>Welcome Back!</h1>
           <p class="subtitle">Shall we keep the momentum going?</p>
           <button class="btn-primary">Continue Learning</button>
         </div>
 
-        <!-- Container Progress Tracker -->
         <div class="progress-section">
-          <h2>Progress Tracker</h2>
-          <div class="progress-chart">
-            <img src="assets/images/progress-chart.png" alt="Progress Chart" />
+          <!-- Container untuk Progress Tracker dan Donut Chart -->
+          <div class="progress-tracker-container">
+            <h2 class="progress-tracker-title">Progress Tracker</h2>
+            <div class="progress-chart">
+              <canvas id="progress-chart"></canvas>
+              <div class="progress-text">
+                <h2>60%</h2>
+                <p>Completed</p>
+              </div>
+            </div>
           </div>
-          <div class="recent-activity">
-            <h3>Recent</h3>
-            <p>Bubble Sort +20xp</p>
-            <p>Insertion Sort +5xp</p>
-            <p>Selection Sort +5xp</p>
+
+          <!-- Container untuk Recent Activity -->
+          <div class="recent-activity-container">
+            <p>Recent</p>
+            <div class="recent-activity">
+              <p>Bubble Sort +20xp</p>
+              <p>Insertion Sort +5xp</p>
+              <p>AutoMap +5xp</p>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="lessons-section">
-        <h2>Lesson</h2>
+        <h2 class="title-section">Lesson</h2>
         <div class="lessons-grid">
           <div class="lesson-card">Bubble Sort</div>
           <div class="lesson-card">Quick Sort</div>
@@ -112,7 +122,7 @@
       </section>
 
       <section class="resources-section">
-        <h2>Resources</h2>
+        <h2 class="title-section">Resources</h2>
         <div class="resources-grid">
           <div class="resource-card">Video Youtube</div>
           <div class="resource-card">Article</div>
