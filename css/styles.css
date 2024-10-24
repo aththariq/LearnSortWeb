@@ -139,7 +139,7 @@ main h1 {
 
 #startlearning-button:hover {
   transform: translateY(-5px) scale(1.05);
-  background-color: var(--secondary-color);
+  background-color: var(--third-color);
   color: var(--background-color);
 }
 
@@ -222,6 +222,7 @@ main h1 {
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
 }
 
 .paragraph {
@@ -234,7 +235,7 @@ main h1 {
   color: var(--grey-color);
 }
 
-#overview {
+.section {
   margin: 7em auto auto auto;
 }
 
@@ -280,14 +281,15 @@ main h1 {
 }
 
 .faq-container {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
 
 .faq-item {
   margin-bottom: 10px;
-  /* border-bottom: 1px solid #ccc;  */
+  border-radius: 5px;
+  border: 1px solid transparent;
   transition: border 0.3s ease;
 }
 
@@ -305,7 +307,8 @@ main h1 {
   background-color: transparent;
   cursor: pointer;
   transition: color 0.3s ease;
-  font: 1em "Inter", sans-serif;
+  font: 1.2em "Inter", sans-serif;
+  font-weight: 400;
 }
 
 .faq-question img {
@@ -314,14 +317,14 @@ main h1 {
   transition: transform 0.3s ease;
 }
 
-.faq-question:hover {
-  border: 2px solid #007bff; /* Border saat hover */
-  border-radius: 5px;
+.faq-item:hover {
+  border: 1px solid var(--primary-color);
+  transition: border 0.3s ease;
 }
 
 .faq-item.active {
-  border: 2px solid #007bff;
-  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  transition: border 0.3s ease;
 }
 
 .faq-item.active .faq-question {
@@ -338,14 +341,110 @@ main h1 {
   transition: max-height 0.3s ease-out, padding 0.3s ease-out;
   padding: 0 15px;
   font: 1em "Inter", sans-serif;
+  font-weight: 350;
 }
 
 .faq-answer p {
-  padding: 10px 0;
+  padding: 0;
   margin: 0;
 }
 
 .faq-item.active .faq-answer {
   max-height: 300px;
-  padding: 15px;
+  padding: 0 15px 15px 15px;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.creator-memo-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  background-color: #121212;
+}
+
+.creator-memo {
+  background-color: #1e1e1e;
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 600px;
+  color: #d0d0d0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.memo-header {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  color: #aaaaaa;
+  margin-bottom: 10px;
+}
+
+.memo-date {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  color: #888888;
+  margin-bottom: 10px;
+}
+
+.memo-company {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  color: #888888;
+  margin-bottom: 20px;
+}
+
+.memo-content {
+  font: 1rem "Inter", sans-serif;
+  line-height: 1.6;
+  color: #d0d0d0;
+  margin-bottom: 20px;
+}
+
+.memo-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.memo-list li {
+  margin-bottom: 10px;
+  font: 1rem "Inter", sans-serif;
+}
+
+.signature-container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.signature {
+  max-width: 200px;
+}
+
+.creator-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  font: 1rem "Inter", sans-serif;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+  object-position: center;
+  border: 2px solid #fff;
+  margin-top: 10px;
+  padding-top: 0;
+  align-self: flex-start;
+}
+
+.creator-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #d0d0d0;
+}
+
+.creator-title {
+  font-size: 0.9rem;
+  color: #888888;
 }
