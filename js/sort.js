@@ -218,9 +218,16 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("speed-slider")
     .addEventListener("input", function (e) {
+      // Map the slider value (0.1 - 2) to the range of speed (2000 ms - 100 ms)
       let maxSpeed = 100; // Kecepatan maksimal (lebih rendah lebih cepat)
       let minSpeed = 2000; // Kecepatan minimal (lebih tinggi lebih lambat)
-      speed = minSpeed - (e.target.value / 100) * (minSpeed - maxSpeed);
+
+      // Correct formula to map the slider's min (0.1) to max (2) to speed range
+      let sliderValue = parseFloat(e.target.value);
+      speed =
+        minSpeed - ((sliderValue - 0.1) / (2 - 0.1)) * (minSpeed - maxSpeed);
+
+      // Update speed label with the new calculated speed
       document.getElementById("speed-label").textContent = `${(
         speed / 1000
       ).toFixed(1)} sec/step`;
