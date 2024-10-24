@@ -10,6 +10,11 @@
   --text-color: #333333;
   --grey-color: #90a2b6;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 html {
   scroll-behavior: auto;
 }
@@ -147,7 +152,6 @@ header nav ul li:hover {
   margin-top: 10px;
 }
 
-
 .footer .fa {
   color: white;
   text-decoration: none;
@@ -173,7 +177,7 @@ header nav ul li:hover {
 .login-container {
   background-color: none;
   border-radius: 15px;
-  max-width: 400px;
+  max-width: 450px;
   width: 100%;
   padding: 40px;
   text-align: center;
@@ -272,13 +276,21 @@ input:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
+.label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 1rem;
+  color: #333;
+}
+
 .forgot-password {
-  text-align: right;
-  display: block;
   font-size: 0.9rem;
   color: #007bff;
   text-decoration: none;
-  margin-bottom: 20px;
 }
 
 .forgot-password:hover {
@@ -295,6 +307,7 @@ input:focus {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
 .sign-in-btn:hover {
@@ -305,6 +318,7 @@ input:focus {
   font-size: 0.8rem;
   color: #888888;
   text-align: left;
+  margin-top: 10px;
 }
 
 .terms a {
