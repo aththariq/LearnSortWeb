@@ -139,8 +139,21 @@ document.getElementById("GetStarted").addEventListener("click", function () {
   window.location.href = "login.html";
 });
 
-document
-  .getElementsByClassName("sign-in-btn")
-  .addEventListener("click", function () {
-    window.location.href = "main-page.html";
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("login-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault(); // Mencegah form dikirim secara default
+
+      // Ambil nilai dari input
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Hanya menampilkan hasil untuk debugging, opsional
+      console.log(`Email: ${email}`);
+      console.log(`Password: ${password}`);
+
+      // Arahkan ke halaman main-page.html
+      window.location.href = "main-page.html";
+    });
+});

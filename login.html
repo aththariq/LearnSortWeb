@@ -88,7 +88,7 @@
           <span>or</span>
           <hr />
         </div>
-        <form action="/path/to/your/login-handler" method="POST">
+        <form id="login-form">
           <label for="email">Email</label>
           <input
             type="email"
@@ -112,7 +112,9 @@
             />
           </div>
 
-          <button type="submit" class="sign-in-btn">Sign In</button>
+          <button id="sign-in-btn" class="sign-in-btn" type="submit">
+            Sign In
+          </button>
         </form>
 
         <p class="terms">
@@ -162,6 +164,6 @@
         </p>
       </div>
     </footer>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/login.js"></script>
   </body>
 </html>

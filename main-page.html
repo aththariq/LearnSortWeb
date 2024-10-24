@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn, practice, and master sorting algorithms with interactive guides and challenges for beginners."
+    />
+
+    <title>Dashboard - LearnSort | Master Sorting Algorithms</title>
+    <!-- Favicon untuk berbagai ukuran -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/Favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/Favicon/favicon-32x32.png"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/Favicon/favicon.ico" />
+
+    <!-- Ikon untuk Apple Touch (iOS devices) -->
+    <link rel="apple-touch-icon" href="assets/Favicon/apple-touch-icon.png" />
+
+    <!-- Favicon untuk Android Chrome -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="assets/Favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/Favicon/android-chrome-512x512.png"
+    />
+
+    <!-- File manifest untuk PWA -->
+    <link rel="manifest" href="assets/Favicon/site.webmanifest" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL@1"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="main-page.html"
+          ><img src="assets/images/Logo.svg" alt="LearnSort Logo"
+        /></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="main-page.html">Home</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="achievements.html">Achievements</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-info">
+        <img
+          src="assets/icon/Person.svg"
+          alt="User Profile Picture"
+          class="profile-pic"
+        />
+      </div>
+    </header>
+
+    <main>
+      <section class="welcome-section">
+        <h1>Welcome Back!</h1>
+        <p class="subtitle">Ready to continue learning?</p>
+        <button type="button" class="btn-primary id="startlearning-button"">Continue Learning</button>
+      </section>
+
+      <section class="progress-section">
+        <h2>Progress Tracker</h2>
+        <div class="progress-container">
+          <div class="progress-chart">
+            <img src="assets/images/progress-chart.png" alt="Progress Chart" />
+          </div>
+          <div class="recent-activity">
+            <h3>Recent</h3>
+            <p>Bubble Sort +20xp</p>
+            <p>Insertion Sort +5xp</p>
+            <p>AutoMap +5xp</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lessons-section">
+        <h2>Lesson</h2>
+        <div class="lessons-grid">
+          <div class="lesson-card">Bubble Sort</div>
+          <div class="lesson-card">Quick Sort</div>
+          <div class="lesson-card">Merge Sort</div>
+          <div class="lesson-card">Merge Sort</div>
+        </div>
+      </section>
+
+      <section class="resources-section">
+        <h2>Resources</h2>
+        <div class="resources-grid">
+          <div class="resource-card">Video Youtube</div>
+          <div class="resource-card">Article</div>
+          <div class="resource-card">Video Youtube</div>
+          <div class="resource-card">and more...</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
