@@ -63,3 +63,23 @@ document.querySelectorAll(".faq-question").forEach((item) => {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const steps = document.querySelectorAll(".step");
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target); 
+        }
+      });
+    },
+    { threshold: 0.5 } 
+  );
+
+  steps.forEach((step) => {
+    observer.observe(step); 
+  });
+});
