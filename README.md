@@ -31,4 +31,6 @@ This project is still under active development, with some features and improveme
 ## Contributing
 We welcome contributions! If you find any bugs, issues, or have suggestions for improvements, feel free to submit an issue or open a pull request. All contributions are greatly appreciated.
 
+<img width="1440" alt="Screenshot 2024-10-24 at 21 52 31" src="https://github.com/user-attachments/assets/6a61b6fa-b0b5-4c27-a834-168492a69ecd">
+
 ![Screenshot](https://github.com/user-attachments/assets/ebcd6b1b-c269-4fe1-9d51-1394704e254b)
