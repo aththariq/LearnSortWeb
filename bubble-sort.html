@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Learn, practice, and master sorting algorithms with interactive guides and challenges for beginners."
+    />
+    <title>Bubble Sort - LearnSort | Master Sorting Algorithms</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/Favicon/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/Favicon/favicon-32x32.png"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/Favicon/favicon.ico" />
+    <link rel="apple-touch-icon" href="assets/Favicon/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="assets/Favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/Favicon/android-chrome-512x512.png"
+    />
+    <link rel="manifest" href="assets/Favicon/site.webmanifest" />
+    <link rel="stylesheet" href="css/sort.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:FILL@1"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html"
+          ><img src="assets/images/Logo.svg" alt="LearnSort Logo"
+        /></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="main-page.html">Home</a></li>
+          <li><a href="leaderboard.html">Leaderboard</a></li>
+          <li><a href="achievements.html">Achievements</a></li>
+        </ul>
+      </nav>
+      <div class="user-info">
+        <img
+          src="assets/icon/Person.svg"
+          alt="User Profile Picture"
+          class="profile-pic"
+        />
+      </div>
+    </header>
+    <main>
+      <section class="bubble-sort-container">
+        <div class="algorithm-controls">
+          <label for="algo-select">Algorithm:</label>
+          <div class="dropdown">
+            <button type="button" onclick="showMenu()" class="dropdown-button">
+              <span id="dropdown-text">Bubble Sort</span>
+              <img
+                src="assets/icon/Arrow-Down.svg"
+                id="chevron"
+                class="chevron-icon"
+                title="Dropdown Arrow"
+              />
+            </button>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-link" data-algorithm="bubble"
+                >Bubble Sort</a
+              >
+              <a href="#" class="dropdown-link" data-algorithm="merge"
+                >Merge Sort</a
+              >
+              <a href="#" class="dropdown-link" data-algorithm="quick"
+                >Quick Sort</a
+              >
+            </div>
+          </div>
+        </div>
+        <canvas id="sortCanvas" width="800" height="400"></canvas>
+        <div class="controls">
+          <button id="play-pause-button" class="control-button">▶ Play</button>
+          <button id="reset-button" class="control-button">🔄 Reset</button>
+          <div>
+            Array Size: <span id="array-size-label">20</span>
+            <input
+              type="range"
+              id="array-size-slider"
+              min="10"
+              max="50"
+              value="20"
+              title="Adjust the array size"
+            />
+          </div>
+          <div>
+            Speed: <span id="speed-label">0.5 sec/step</span>
+            <input
+              type="range"
+              id="speed-slider"
+              min="0.1"
+              max="2"
+              step="0.1"
+              value="0.5"
+              title="Adjust the speed"
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/sort.js"></script>
+  </body>
+</html>
