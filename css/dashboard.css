@@ -237,17 +237,18 @@ canvas {
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-gap: 40px;
 }
 
 .lesson-card,
 .resource-card {
-  background-color: #e0e0e0;
   text-align: center;
   padding: 30px 20px;
   border-radius: 5px;
   font-size: 1.2rem;
   cursor: pointer;
+  font-size: 1.5em;
+  font-weight: 600;
 }
 
 .progress-chart {
@@ -266,4 +267,17 @@ canvas {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.menu {
+  text-decoration: none;
+  color: var(--secondary-color);
+  background-color: var(--grey-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.menu:hover {
+  background-color: var(--primary-color);
+  color: whitesmoke;
 }
