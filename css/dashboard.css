@@ -205,7 +205,7 @@ canvas {
   padding-top: 45px;
 }
 
-.recent-activity p{
+.recent-activity p {
   font-size: 1rem;
   margin-bottom: 15px;
   color: #333;
@@ -261,7 +261,7 @@ canvas {
   display: block;
 }
 
-.title-section{
+.title-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
