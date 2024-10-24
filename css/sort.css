@@ -147,13 +147,13 @@ canvas {
 
 .number-label {
   font-size: 18px;
-  fill: #444; /* Warna yang lebih terlihat */
+  fill: #444;
 }
 
 .bar-label {
   font-size: 14px;
   font-weight: bold;
-  fill: #333; /* Warna yang lebih kontras untuk angka */
+  fill: #333;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -171,7 +171,6 @@ input[type="range"]::-ms-thumb {
   border-radius: 50%;
 }
 
-/* Gaya untuk dropdown */
 .dropdown {
   position: relative;
   display: inline-block;
@@ -205,13 +204,13 @@ input[type="range"]::-ms-thumb {
   width: 1rem;
   height: 1rem;
   margin-left: auto;
-  filter: invert(0); /* Warna hitam default */
-  transform: rotate(0); /* Posisi default */
-  transition: filter 0.3s ease, transform 0.3s ease; /* Transisi keduanya */
+  filter: invert(0);
+  transform: rotate(0);
+  transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .dropdown-button:hover .chevron-icon {
-  filter: invert(1); /* Ubah menjadi putih */
+  filter: invert(1);
 }
 
 .chevron-icon.rotate {
