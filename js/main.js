@@ -49,3 +49,17 @@ function duplicateImages() {
 }
 
 duplicateImages();
+
+document.querySelectorAll(".faq-question").forEach((item) => {
+  item.addEventListener("click", (event) => {
+    const faqItem = event.target.parentElement;
+
+    faqItem.classList.toggle("active");
+
+    document.querySelectorAll(".faq-item").forEach((otherItem) => {
+      if (otherItem !== faqItem) {
+        otherItem.classList.remove("active");
+      }
+    });
+  });
+});

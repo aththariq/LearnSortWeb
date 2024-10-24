@@ -237,3 +237,115 @@ main h1 {
 #overview {
   margin: 7em auto auto auto;
 }
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin: 40px auto;
+  font: 1.2em "Inter", sans-serif;
+  max-width: 800px;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: 25%;
+}
+
+.step-icon img {
+  width: 35px;
+  height: auto;
+  padding-right: 10px;
+  opacity: 0.6;
+}
+
+.step-content {
+  text-align: left;
+}
+
+.step-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.step-content p {
+  font-size: 1rem;
+  margin: 0;
+  color: #666;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.faq-item {
+  margin-bottom: 10px;
+  /* border-bottom: 1px solid #ccc;  */
+  transition: border 0.3s ease;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  font-size: 1.2em;
+  color: var(--text-color);
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font: 1em "Inter", sans-serif;
+}
+
+.faq-question img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.faq-question:hover {
+  border: 2px solid #007bff; /* Border saat hover */
+  border-radius: 5px;
+}
+
+.faq-item.active {
+  border: 2px solid #007bff;
+  border-radius: 5px;
+}
+
+.faq-item.active .faq-question {
+  color: #007bff;
+}
+
+.faq-item.active .faq-question img {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  padding: 0 15px;
+  font: 1em "Inter", sans-serif;
+}
+
+.faq-answer p {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+  padding: 15px;
+}
