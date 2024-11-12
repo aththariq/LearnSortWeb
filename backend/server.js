@@ -2,13 +2,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const session = require("express-session");
-const passport = require("./config/passport"); // Import passport tanpa mengeksekusi
+const passport = require("./config/passport");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const authRoutes = require("./routes/auth");
 const MongoDBStore = require("connect-mongodb-session")(session);
+const path = require("path");
 
 dotenv.config();
 
@@ -19,7 +20,6 @@ const allowedOrigins = ["https://nama-frontend-vercel.vercel.app"];
 app.use(
   cors({
     origin: allowedOrigins,
-    credentials: true,
   })
 );
 
@@ -35,13 +35,21 @@ app.use("/auth/", authLimiter);
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public")));
+
+// Serve frontend files
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend", "index.html"));
+});
+
 const store = new MongoDBStore({
   uri: process.env.MONGO_URI,
   collection: "sessions",
 });
 
 store.on("error", function (error) {
-  console.error("Error connecting to MongoDB session store:", error);
+  console.error("Session store error:", error);
 });
 
 app.use(
@@ -61,17 +69,26 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on("error", (err) => {
+  console.log("Mongoose connection error:", err);
+});
+
+mongoose.connection.once("open", () => {
+  console.log("Connected to MongoDB");
+});
 
 app.use("/auth", authRoutes);
 
-const PORT = process.env.PORT || 5000;
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server berjalan di port ${PORT}`);
 });

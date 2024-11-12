@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (response.ok) {
         // Login berhasil, arahkan ke dashboard
-        window.location.href = "/dashboard";
+        window.location.href = "/dashboard.html";
       } else {
         // Tampilkan pesan kesalahan
         alert(data.msg || "Login gagal");
