@@ -9,8 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
+    const backendUrl = "https://learnsort-00d5721850fc.herokuapp.com"; // Add this line
+
     try {
-      const response = await fetch("/auth/login", {
+      const response = await fetch(`${backendUrl}/auth/login`, { // Changed from "/auth/login" to `${backendUrl}/auth/login`
         method: "POST",
         headers: {
           "Content-Type": "application/json",
