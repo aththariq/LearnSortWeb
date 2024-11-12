@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("login-form");
 
   loginForm.addEventListener("submit", async function (event) {
-    event.preventDefault(); // Mencegah form dikirim secara default
+    event.preventDefault(); // Prevent default form submission
 
-    // Ambil nilai dari input
+    // Get input values
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -16,27 +16,27 @@ document.addEventListener("DOMContentLoaded", function () {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email, password }),
-        credentials: "include", // Sertakan cookies
+        credentials: "include", // Include cookies
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Login berhasil, arahkan ke dashboard
+        // Successful login, redirect to dashboard
         window.location.href = "/dashboard.html";
       } else {
-        // Tampilkan pesan kesalahan
-        alert(data.msg || "Login gagal");
+        // Display error message
+        alert(data.msg || "Login failed");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Terjadi kesalahan saat login");
+      alert("An error occurred during login");
     }
   });
 
   // Google Sign-In Button
   const googleSignInBtn = document.querySelector(".google-sign-in");
   googleSignInBtn.addEventListener("click", function () {
-    window.location.href = "http://localhost:5000/auth/google";
+    window.location.href = "https://learnsort-00d5721850fc.herokuapp.com/auth/google";
   });
 });
