@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = await response.json();
 
       if (response.ok) {
-        // Successful login, redirect to dashboard
-        window.location.href = "/dashboard.html";
+        // Successful login, redirect to main page
+        window.location.href = "/main-page.html";
       } else {
         // Display error message
         alert(data.msg || "Login failed");
@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Google Sign-In Button
   const googleSignInBtn = document.querySelector(".google-sign-in");
   googleSignInBtn.addEventListener("click", function () {
-    window.location.href = "https://learnsort-00d5721850fc.herokuapp.com/auth/google";
+    window.location.href =
+      "https://learnsort-00d5721850fc.herokuapp.com/auth/google";
   });
 });
