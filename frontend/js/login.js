@@ -37,6 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Google Sign-In Button
   const googleSignInBtn = document.querySelector(".google-sign-in");
   googleSignInBtn.addEventListener("click", function () {
-    window.location.href = "/auth/google";
+    window.location.href = "http://localhost:5000/auth/google";
   });
 });
