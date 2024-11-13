@@ -336,6 +336,26 @@ label {
   text-decoration: underline;
 }
 
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggle-password .fa {
+  color: var(--grey-color);
+  font-size: 1.2rem;
+}
+
 @media (max-width: 768px) {
   .login-container {
     padding: 20px;

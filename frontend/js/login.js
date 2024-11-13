@@ -42,4 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href =
       "https://learnsort-00d5721850fc.herokuapp.com/auth/google";
   });
+
+  const togglePasswordBtn = document.querySelector(".toggle-password");
+  const passwordInput = document.getElementById("password");
+
+  togglePasswordBtn.addEventListener("click", function () {
+    const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+    passwordInput.setAttribute("type", type);
+    this.querySelector(".fa").classList.toggle("fa-eye-slash");
+  });
 });
