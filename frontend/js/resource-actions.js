@@ -1,13 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Example: Log activity when a resource or lesson is accessed
+  // Log activity when a resource or lesson is accessed
   const lessonButtons = document.querySelectorAll(".lesson-card, .resource-card a");
 
   lessonButtons.forEach(button => {
     button.addEventListener("click", function (e) {
       e.preventDefault(); // Prevent default navigation
 
-      const activityName = this.querySelector(".lesson-card, .resource-title")?.textContent || "Resource Access";
-      const xpGained = getXpForActivity(activityName);
+      let activityName = "Resource Access";
+      let xpGained = 12.5; // Fixed XP per activity
+
+      if (button.closest(".lessons-section")) {
+        // It's a Learn card
+        activityName = this.querySelector(".lesson-card")?.textContent || "Learn Activity";
+      } else if (button.closest(".resources-section")) {
+        // It's a Resource card
+        const resourceType = this.querySelector(".resource-type")?.textContent || "Resource";
+        activityName = resourceType;
+      }
 
       logUserActivity(activityName, xpGained).then(() => {
         // After logging, navigate to the link
@@ -15,22 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
-
-  function getXpForActivity(activity) {
-    // Define XP values based on activity
-    const xpMapping = {
-      "Bubble Sort": 20,
-      "Quick Sort": 20,
-      "Heap Sort": 20,
-      "Merge Sort": 20,
-      "Learn Bubble Sort": 10,
-      "Learn Merge Sort": 15,
-      "Learn Insertion Sort": 10,
-      // Add more mappings as needed
-    };
-
-    return xpMapping[activity] || 5; // Default XP
-  }
 
   async function logUserActivity(activity, xp) {
     try {
