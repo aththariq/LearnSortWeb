@@ -48,6 +48,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   </head>
   <body>
     <header>
@@ -74,18 +75,18 @@
     </header>
 
     <main>
-      <div id="home">
-        <h1>
+      <div id="home" data-aos="fade-up">
+        <h1 data-aos="fade-up" data-aos-delay="200">
           Discover How Easy Sorting<br />
           Algorithms Can Be
         </h1>
-        <p id="description-h1">
+        <p id="description-h1" data-aos="fade-up" data-aos-delay="400">
           Practice and learn with visual guides and interactive <br />
           challenges. Perfect for beginners!
         </p>
-        <button id="startlearning-button">Start learning today</button>
+        <button id="startlearning-button" data-aos="fade-up" data-aos-delay="600">Start learning today</button>
       </div>
-      <div id="img-contoh">
+      <div id="img-contoh" data-aos="fade-up">
         <img id="contoh-gambar" src="assets/images/showcase.png" alt="contoh" />
       </div>
       <div id="algorithms">
@@ -374,5 +375,9 @@
     </footer>
 
     <script type="module" src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
   </body>
 </html>

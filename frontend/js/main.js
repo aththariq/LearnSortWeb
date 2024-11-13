@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Ensure the page is scrolled to the top on load
+  window.scrollTo(0, 0);
+
   // Throttle function
   function throttle(func, limit) {
     let lastFunc;
