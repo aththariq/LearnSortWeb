@@ -8,8 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       console.log("User data:", data);
       if (data.authenticated) {
-        document.getElementById("username-display").textContent =
-          data.user.username;
+        const { username, xp, recentActivities } = data.user;
+        document.getElementById("username-display").textContent = username;
+        initializeProgressChart(xp);
+        updateRecentActivities(recentActivities);
       } else {
         // Replace alert with SweetAlert2
         Swal.fire({
@@ -79,30 +81,58 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Inisialisasi Donut Chart untuk Progress Tracker
-  const ctx = document.getElementById("progress-chart").getContext("2d");
-  const progressChart = new Chart(ctx, {
-    type: "doughnut",
-    data: {
-      labels: ["Completed", "Remaining"],
-      datasets: [
-        {
-          data: [60, 40], // 60% progress, 40% remaining
-          backgroundColor: ["#2d6a4f", "#d3d3d3"], // Warna donut chart
-          hoverBackgroundColor: ["#1b4332", "#bbbbbb"],
-        },
-      ],
-    },
-    options: {
-      cutout: "70%", // Untuk membuat donut chart
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false, // Sembunyikan legend
+  // Initialize Doughnut Chart based on user XP
+  function initializeProgressChart(xp) {
+    const ctx = document.getElementById("progress-chart").getContext("2d");
+    const progressPercentage = Math.min(xp, 100); // Cap at 100
+    const remaining = 100 - progressPercentage;
+
+    const progressChart = new Chart(ctx, {
+      type: "doughnut",
+      data: {
+        labels: ["Completed", "Remaining"],
+        datasets: [
+          {
+            data: [progressPercentage, remaining],
+            backgroundColor: ["#2d6a4f", "#d3d3d3"],
+            hoverBackgroundColor: ["#1b4332", "#bbbbbb"],
+          },
+        ],
+      },
+      options: {
+        cutout: "70%",
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
         },
       },
-    },
-  });
+    });
+
+    // Update progress text
+    document.querySelector(".progress-text h2").textContent = `${progressPercentage}%`;
+  }
+
+  // Update Recent Activities Section
+  function updateRecentActivities(activities) {
+    const recentActivityDiv = document.querySelector(".recent-activity");
+    recentActivityDiv.innerHTML = ""; // Clear existing activities
+
+    if (activities.length === 0) {
+      recentActivityDiv.innerHTML = "<p>Belum ada aktivitas terbaru.</p>";
+      return;
+    }
+
+    activities.forEach((activity) => {
+      const activityP = document.createElement("p");
+      activityP.textContent = `${activity.activity} +${activity.xpGained}xp`;
+      recentActivityDiv.appendChild(activityP);
+    });
+  }
+
+  // Inisialisasi Donut Chart untuk Progress Tracker
+  // Removed duplicate initialization
 });
 
