@@ -1,26 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Log activity when a resource or lesson is accessed
-  const lessonButtons = document.querySelectorAll(".lesson-card, .resource-card a");
 
-  lessonButtons.forEach(button => {
-    button.addEventListener("click", function (e) {
+  // Select 'Learn' card links
+  const lessonLinks = document.querySelectorAll(".lessons-grid .menu");
+
+  // Select 'Resource' card links
+  const resourceLinks = document.querySelectorAll(".resource-card a");
+
+  lessonLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
       e.preventDefault(); // Prevent default navigation
 
-      let activityName = "Resource Access";
+      let activityName = this.querySelector(".lesson-card")?.textContent.trim() || "Learn Activity";
       let xpGained = 12.5; // Fixed XP per activity
-
-      if (button.closest(".lessons-section")) {
-        // It's a Learn card
-        activityName = this.querySelector(".lesson-card")?.textContent || "Learn Activity";
-      } else if (button.closest(".resources-section")) {
-        // It's a Resource card
-        const resourceType = this.querySelector(".resource-type")?.textContent || "Resource";
-        activityName = resourceType;
-      }
 
       logUserActivity(activityName, xpGained).then(() => {
         // After logging, navigate to the link
         window.location.href = this.href;
+      });
+    });
+  });
+
+  resourceLinks.forEach(link => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent default navigation
+
+      let activityName = this.querySelector(".resource-title")?.textContent.trim() || "Resource";
+      let xpGained = 12.5; // Fixed XP per activity
+
+      logUserActivity(activityName, xpGained).then(() => {
+        // After logging, open the link in a new tab
+        window.open(this.href, '_blank');
       });
     });
   });
