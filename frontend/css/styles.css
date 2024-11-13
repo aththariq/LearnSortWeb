@@ -200,7 +200,7 @@ main h1 {
 .scrolling-wrapper {
   display: flex;
   justify-content: flex-start;
-  gap: 70px;
+  gap: 20px;
   animation: scroll 60s linear infinite;
   overflow: visible;
 }
