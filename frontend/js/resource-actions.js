@@ -1,14 +1,18 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   // Example: Log activity when a resource or lesson is accessed
   const lessonButtons = document.querySelectorAll(".lesson-card, .resource-card a");
 
   lessonButtons.forEach(button => {
     button.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevent default navigation
+
       const activityName = this.querySelector(".lesson-card, .resource-title")?.textContent || "Resource Access";
       const xpGained = getXpForActivity(activityName);
 
-      logUserActivity(activityName, xpGained);
+      logUserActivity(activityName, xpGained).then(() => {
+        // After logging, navigate to the link
+        window.location.href = this.href;
+      });
     });
   });
 
@@ -28,30 +32,30 @@ document.addEventListener("DOMContentLoaded", function () {
     return xpMapping[activity] || 5; // Default XP
   }
 
-  function logUserActivity(activity, xp) {
-    fetch("https://learnsort-00d5721850fc.herokuapp.com/auth/log-activity", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "include",
-      body: JSON.stringify({ activity, xpGained: xp })
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log("Activity logged:", data);
-        // Optionally, you can update the chart and recent activities without reloading
-        updateProgressAndActivities(data.xp, data.recentActivities);
-      })
-      .catch(error => {
-        console.error("Error logging activity:", error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: "Terjadi kesalahan saat mencatat aktivitas.",
-          confirmButtonText: 'OK'
-        });
+  async function logUserActivity(activity, xp) {
+    try {
+      const response = await fetch("https://learnsort-00d5721850fc.herokuapp.com/auth/log-activity", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({ activity, xpGained: xp })
       });
+
+      const data = await response.json();
+      console.log("Activity logged:", data);
+      // Optionally, update the UI immediately
+      updateProgressAndActivities(data.xp, data.recentActivities);
+    } catch (error) {
+      console.error("Error logging activity:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: "Terjadi kesalahan saat mencatat aktivitas.",
+        confirmButtonText: 'OK'
+      });
+    }
   }
 
   function updateProgressAndActivities(xp, activities) {

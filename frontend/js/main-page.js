@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressPercentage = Math.min(xp, 100); // Cap at 100
     const remaining = 100 - progressPercentage;
 
-    const progressChart = new Chart(ctx, {
+    window.progressChartInstance = new Chart(ctx, { // Assign to window.progressChartInstance
       type: "doughnut",
       data: {
         labels: ["Completed", "Remaining"],
