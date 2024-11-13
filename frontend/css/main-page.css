@@ -81,6 +81,12 @@ header nav ul li a:hover {
   border-radius: 50%;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .content-wrapper {
   display: flex;
   justify-content: space-between;
