@@ -10,6 +10,20 @@ document.addEventListener("DOMContentLoaded", function () {
   let swapped;
   let isPlaying = false; // Status untuk tombol play/pause
 
+  // Function to get query parameters
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Set selectedAlgorithm from URL if available
+  const algorithmFromURL = getQueryParam("algorithm");
+  if (algorithmFromURL) {
+    selectedAlgorithm = algorithmFromURL;
+    document.getElementById("dropdown-text").textContent =
+      algorithmFromURL.charAt(0).toUpperCase() + algorithmFromURL.slice(1) + " Sort";
+  }
+
   // Fungsi untuk menggambar array di canvas
   function drawArray(arr) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
