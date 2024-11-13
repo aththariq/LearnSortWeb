@@ -5,7 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - LearnSort</title>
-    <link rel="stylesheet" href="css/styles-login.css" />
+    <link rel="stylesheet" href="css/styles-register.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
   </head>
   <body>
     <!-- Navbar Section -->
@@ -71,8 +75,14 @@
               placeholder="Enter password"
               required
               autocomplete="new-password"
-              data-listener-added_cb4f8a77="true"
             />
+            <button
+              type="button"
+              class="toggle-password"
+              title="Show/Hide Password"
+            >
+              <i class="fa fa-eye"></i>
+            </button>
           </div>
 
           <div class="label-container">
@@ -86,9 +96,16 @@
               placeholder="Confirm password"
               required
               autocomplete="new-password"
-              data-listener-added_cb4f8a77="true"
             />
+            <button
+              type="button"
+              class="toggle-password"
+              title="Show/Hide Password"
+            >
+              <i class="fa fa-eye"></i>
+            </button>
           </div>
+          <p id="password-warning" class="warning-message"></p>
 
           <button id="register-btn" class="sign-in-btn" type="submit">
             Register
