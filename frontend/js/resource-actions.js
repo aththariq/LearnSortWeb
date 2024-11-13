@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = await response.json();
       console.log("Activity logged:", data);
       // Optionally, update the UI immediately
-      updateProgressAndActivities(data.xp, data.recentActivities);
+      updateProgressAndActivities(data.xp, data.recentActivities.slice(0, 4)); // Ensure only 4 activities
     } catch (error) {
       console.error("Error logging activity:", error);
       Swal.fire({
