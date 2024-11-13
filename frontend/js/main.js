@@ -1,6 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Ensure the page is scrolled to the top on load
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener("beforeunload", function () {
   window.scrollTo(0, 0);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  window.scrollTo(0, 0);
+  const header = document.querySelector("header");
+
+  // Add a class to prevent initial transformation
+  if (header) {
+    header.classList.add("no-transform");
+  }
+
+  // Remove the class after a short delay
+  setTimeout(() => {
+    if (header) {
+      header.classList.remove("no-transform");
+    }
+  }, 100);
 
   // Throttle function
   function throttle(func, limit) {
@@ -28,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener(
     "scroll",
     throttle(function () {
-      const header = document.querySelector("header");
       if (header) {
         if (window.scrollY > 50) {
           header.classList.add("scrolled");
@@ -38,6 +57,15 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }, 100)
   );
+
+  // Check scroll position on load
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }
 
   // Duplicate images
   const scrollingWrapper = document.querySelector(".scrolling-wrapper");
