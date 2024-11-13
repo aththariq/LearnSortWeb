@@ -122,6 +122,29 @@ header nav ul li a:hover {
   background-color: var(--secondary-color);
 }
 
+#explainButton {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+#explainButton:hover {
+  background-color: var(--secondary-color);
+}
+
+.explain-icon {
+  width: 20px;
+  height: 20px;
+}
+
 input[type="range"] {
   width: 150px;
   margin-left: 10px;
@@ -249,5 +272,27 @@ input[type="range"]::-ms-thumb {
 .dropdown.active .dropdown-content {
   opacity: 1;
   transform: scaleY(1);
+  visibility: visible;
+}
+
+.notification {
+  position: fixed;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2196F3; /* Blue background */
+  color: white;
+  padding: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+}
+
+.notification.show {
+  top: 20px;
+  opacity: 1;
   visibility: visible;
 }
