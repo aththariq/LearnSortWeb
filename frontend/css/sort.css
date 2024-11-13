@@ -296,3 +296,40 @@ input[type="range"]::-ms-thumb {
   opacity: 1;
   visibility: visible;
 }
+
+#explanation {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow: auto;
+}
+
+#explanation strong {
+  font-weight: 600;
+}
+
+#explanation em {
+  font-style: italic;
+}
+
+#explanation p {
+  margin-bottom: 15px;
+}
+
+#explanation a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+#explanation a:hover {
+  text-decoration: underline;
+}

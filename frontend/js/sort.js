@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const playPauseButton = document.getElementById("play-pause-button");
   const chevron = document.getElementById("chevron");
   const dropdownContent = document.querySelector(".dropdown-content");
+  let currentAlgorithm = "bubbleSort";
 
   function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -25,7 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (algorithmFromURL) {
     selectedAlgorithm = algorithmFromURL;
     document.getElementById("dropdown-text").textContent =
-      algorithmFromURL.charAt(0).toUpperCase() + algorithmFromURL.slice(1) + " Sort";
+      algorithmFromURL.charAt(0).toUpperCase() +
+      algorithmFromURL.slice(1) +
+      " Sort";
   }
 
   function drawArray(arr) {
@@ -275,6 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       selectedAlgorithm = e.target.getAttribute("data-algorithm");
+      currentAlgorithm = e.target.getAttribute("data-algorithm") + "Sort"; // Ensure it matches the switch cases
 
       document.getElementById("dropdown-text").textContent =
         e.target.textContent;
@@ -304,44 +308,47 @@ document.addEventListener("DOMContentLoaded", function () {
       sorting = false;
       paused = false;
       isPlaying = false;
-  
+
       // Wait a brief moment to ensure all sorting operations have stopped
-      await new Promise(resolve => setTimeout(resolve, 50));
-  
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
       resetClickCount++;
-      
+
       // Set a timeout to reset the click counter
       const timeoutId = setTimeout(() => {
         resetClickCount = 0;
       }, 300);
-  
+
       if (resetClickCount === 1) {
         // Reset to the initial array
         console.log("Resetting to initial array.");
         array = initialArray.slice();
         drawArray(array);
         playPauseButton.textContent = "▶ Play";
-        showNotification("Kembali ke initial array. Double click untuk menghasilkan array baru.");
+        showNotification(
+          "Kembali ke initial array. Double click untuk menghasilkan array baru."
+        );
       } else if (resetClickCount === 2) {
         // Clear the timeout to prevent resetting resetClickCount
         clearTimeout(timeoutId);
-        
+
         // Generate completely new array
         console.log("Generating new array.");
-        
+
         // Generate new array with current size
-        array = Array.from({ length: arraySize }, () => 
-          Math.floor(Math.random() * 100) + 1
+        array = Array.from(
+          { length: arraySize },
+          () => Math.floor(Math.random() * 100) + 1
         );
-        
+
         // Update initial array
         initialArray = array.slice();
-        
+
         // Update display
         drawArray(array);
         playPauseButton.textContent = "▶ Play";
         showNotification("Array baru telah diinisialisasi.");
-        
+
         // Reset click counter immediately
         resetClickCount = 0;
       }
@@ -403,12 +410,64 @@ document.addEventListener("DOMContentLoaded", function () {
       check();
     });
   }
-  function showNotification(message) {    const notification = document.getElementById('notification');
+  function showNotification(message) {
+    const notification = document.getElementById("notification");
     notification.textContent = message;
-    notification.classList.add('show');
+    notification.classList.add("show");
     setTimeout(() => {
-      notification.classList.remove('show');
+      notification.classList.remove("show");
     }, 3000); // The notification will disappear after 3 seconds
   }
-});
+  document
+    .getElementById("explainButton")
+    .addEventListener("click", async () => {
+      let algorithmDescription = "";
 
+      switch (currentAlgorithm) {
+        case "bubbleSort":
+          algorithmDescription =
+            "**Bubble Sort** is currently being visualized. The algorithm works by repeatedly stepping through the list, comparing adjacent elements and swapping them if they are in the wrong order. This process is repeated until the list is sorted.";
+          break;
+        case "quickSort":
+          algorithmDescription =
+            "### Quick Sort\nQuick Sort is being visualized. It works by selecting a *pivot* element and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.";
+          break;
+        case "mergeSort":
+          algorithmDescription =
+            "#### Merge Sort\nMerge Sort is currently visualized. It divides the unsorted list into n sublists, each containing one element, and then repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.";
+          break;
+        default:
+          algorithmDescription =
+            "Please explain the sorting process happening on the canvas in detail.";
+      }
+
+      const response = await fetch(
+        "https://openrouter.ai/api/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            Authorization:
+              "Bearer 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",
+            "HTTP-Referer": "https://learn-sort-web.vercel.app/",
+            "X-Title": "Learn Sort Web",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "meta-llama/llama-3.2-3b-instruct:free",
+            messages: [
+              {
+                role: "user",
+                content: algorithmDescription,
+              },
+            ],
+          }),
+        }
+      );
+
+      const data = await response.json();
+      const markdownContent = data.choices[0].message.content;
+      const htmlContent = marked.parse(markdownContent);
+      const sanitizedContent = DOMPurify.sanitize(htmlContent);
+      document.getElementById("explanation").innerHTML = sanitizedContent;
+    });
+});
