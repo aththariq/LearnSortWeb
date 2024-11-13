@@ -178,7 +178,7 @@ main h1 {
 
 .scroll-container {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 
   -webkit-mask-image: linear-gradient(
     to right,
@@ -206,14 +206,17 @@ main h1 {
 }
 
 .scrolling-wrapper img {
-  height: auto;
-  width: 300px;
+  height: 50px; 
+  width: auto;
   transition: transform 0.3s ease;
+  overflow: visible;
+  padding: 10px;
 }
 
 .scrolling-wrapper img:hover {
   animation-play-state: paused;
   transform: scale(1.2);
+  overflow: visible;
 }
 
 @keyframes scroll {
@@ -555,4 +558,12 @@ main h1 {
 .fa:hover {
   color: #007bff;
   transform: scale(1.2);
+}
+
+#overview.section {
+  margin-top: 50px;
+}
+
+#algorithms {
+  padding-bottom: 50px;
 }
