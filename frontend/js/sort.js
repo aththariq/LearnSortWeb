@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const chevron = document.getElementById("chevron");
   const dropdownContent = document.querySelector(".dropdown-content");
   let currentAlgorithm = "bubbleSort";
+  const dropdown = document.querySelector(".dropdown");
 
   function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -274,6 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Modify the dropdown link click handler to remove 'active' from 'dropdown' instead of 'dropdown-content'
   document.querySelectorAll(".dropdown-link").forEach(function (link) {
     link.addEventListener("click", function (e) {
       e.preventDefault();
@@ -283,14 +285,14 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("dropdown-text").textContent =
         e.target.textContent;
 
-      // Tutup dropdown dan putar kembali chevron
-      dropdownContent.classList.remove("active");
+      // Close the dropdown by removing 'active' from the parent '.dropdown' element
+      dropdown.classList.remove("active");
       chevron.classList.remove("rotate");
     });
   });
 
   function showMenu() {
-    dropdownContent.classList.toggle("active");
+    dropdown.classList.toggle("active"); // Toggle 'active' on dropdown
     chevron.classList.toggle("rotate");
   }
 
@@ -390,9 +392,10 @@ document.addEventListener("DOMContentLoaded", function () {
   initArray(arraySize, true); // Save the initial array
 
   // Ensure window click listener is inside DOMContentLoaded
+  // Modify the window click listener to remove 'active' from 'dropdown' instead of 'dropdown-content'
   window.onclick = function (event) {
     if (!event.target.closest(".dropdown-button")) {
-      dropdownContent.classList.remove("active");
+      dropdown.classList.remove("active");
       chevron.classList.remove("rotate");
     }
   };
@@ -426,48 +429,69 @@ document.addEventListener("DOMContentLoaded", function () {
       switch (currentAlgorithm) {
         case "bubbleSort":
           algorithmDescription =
-            "**Bubble Sort** is currently being visualized. The algorithm works by repeatedly stepping through the list, comparing adjacent elements and swapping them if they are in the wrong order. This process is repeated until the list is sorted.";
+            "Berikan penjelasan mendetail tentang **Bubble Sort** yang sedang divisualisasikan. Fokus pada cara kerja algoritma tanpa menyertakan contoh kode. Algoritma ini bekerja dengan berulang kali membandingkan elemen yang bersebelahan dan menukarnya jika urutannya salah. Proses ini diulangi hingga daftar benar-benar terurut.";
           break;
         case "quickSort":
           algorithmDescription =
-            "### Quick Sort\nQuick Sort is being visualized. It works by selecting a *pivot* element and partitioning the other elements into two sub-arrays, according to whether they are less than or greater than the pivot. The sub-arrays are then sorted recursively.";
+            "Berikan penjelasan lengkap tentang **Quick Sort** yang sedang divisualisasikan. Jelaskan prinsip dasar algoritma, seperti pemilihan elemen pivot dan pembagian daftar, tanpa contoh kode. Algoritma ini membagi elemen-elemen ke dalam dua subarray berdasarkan nilai relatifnya terhadap pivot, lalu subarray diurutkan secara rekursif.";
           break;
         case "mergeSort":
           algorithmDescription =
-            "#### Merge Sort\nMerge Sort is currently visualized. It divides the unsorted list into n sublists, each containing one element, and then repeatedly merges sublists to produce new sorted sublists until there is only one sublist remaining.";
+            "Berikan penjelasan menyeluruh tentang **Merge Sort** yang sedang divisualisasikan. Jelaskan bagaimana algoritma membagi daftar menjadi sub-daftar dan menggabungkannya kembali tanpa contoh kode. Algoritma ini bekerja dengan membagi daftar yang belum terurut menjadi sub-daftar kecil, yang kemudian digabungkan berulang kali hingga daftar tersusun rapi.";
           break;
         default:
           algorithmDescription =
-            "Please explain the sorting process happening on the canvas in detail.";
+            "Berikan penjelasan mendetail tentang proses pengurutan yang terjadi di kanvas tanpa contoh kode.";
       }
 
-      const response = await fetch(
-        "https://openrouter.ai/api/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            Authorization:
-              "Bearer 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",
-            "HTTP-Referer": "https://learn-sort-web.vercel.app/",
-            "X-Title": "Learn Sort Web",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            model: "meta-llama/llama-3.2-3b-instruct:free",
-            messages: [
-              {
-                role: "user",
-                content: algorithmDescription,
-              },
-            ],
-          }),
-        }
-      );
+      // Hide the explanation div before loading new content
+      const explanationDiv = document.getElementById("explanation");
+      explanationDiv.classList.remove("visible");
+      explanationDiv.innerHTML = ""; // Clear previous content
 
-      const data = await response.json();
-      const markdownContent = data.choices[0].message.content;
-      const htmlContent = marked.parse(markdownContent);
-      const sanitizedContent = DOMPurify.sanitize(htmlContent);
-      document.getElementById("explanation").innerHTML = sanitizedContent;
+      try {
+        showNotification("Loading explanation...");
+
+        const response = await fetch(
+          "https://openrouter.ai/api/v1/chat/completions",
+          {
+            method: "POST",
+            headers: {
+              Authorization:
+                "Bearer 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",
+              "HTTP-Referer": "https://learn-sort-web.vercel.app/",
+              "X-Title": "Learn Sort Web",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              model: "meta-llama/llama-3.2-3b-instruct:free",
+              messages: [
+                {
+                  role: "user",
+                  content: algorithmDescription,
+                },
+              ],
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        const markdownContent = data.choices[0].message.content;
+        const htmlContent = marked.parse(markdownContent);
+        const sanitizedContent = DOMPurify.sanitize(htmlContent);
+        explanationDiv.innerHTML = sanitizedContent;
+
+        // Add the 'visible' class to trigger CSS animation
+        explanationDiv.classList.add("visible");
+
+        showNotification("Explanation loaded successfully.");
+      } catch (error) {
+        console.error("Error fetching explanation:", error);
+        showNotification("Failed to load explanation.");
+      }
     });
 });
