@@ -139,6 +139,25 @@ header nav ul li a:hover {
   vertical-align: middle;
 }
 
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font: 17px "Inter", sans-serif;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: scale(1.05);
+}
+
 .progress-tracker-title {
   font-size: 1.5rem;
   font-weight: 600;
