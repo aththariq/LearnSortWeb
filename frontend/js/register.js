@@ -1,7 +1,19 @@
-// public/js/register.js
-
 document.addEventListener("DOMContentLoaded", function () {
   const registerForm = document.getElementById("register-form");
+
+  // Move this outside the submit handler
+  const emailInput = document.getElementById("email");
+  const emailWarning = document.getElementById("email-warning");
+
+  emailInput.addEventListener("input", function () {
+    if (!emailInput.checkValidity()) {
+      emailWarning.textContent = "Please enter a valid email address.";
+      emailInput.classList.add("invalid");
+    } else {
+      emailWarning.textContent = "";
+      emailInput.classList.remove("invalid");
+    }
+  });
 
   registerForm.addEventListener("submit", async function (event) {
     event.preventDefault(); // Mencegah form dikirim secara default
@@ -14,8 +26,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Validasi sederhana di frontend
     const passwordWarning = document.getElementById("password-warning");
+    
+    // Add password length validation
+    if (password.length < 6) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Password harus minimal 6 karakter!'
+        // position: "center" // Optional: Explicitly set to center
+      });
+      document.getElementById("password").classList.add("invalid");
+      return;
+    }
+
     if (password !== password2) {
-      passwordWarning.textContent = "Passwords do not match";
+      // Replace alert with SweetAlert
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Passwords do not match'
+        // position: "center" // Optional: Explicitly set to center
+      });
       document.getElementById("password2").classList.add("invalid");
       document.getElementById("password2").reportValidity();
       return;
@@ -25,8 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("password2").setCustomValidity("");
     }
 
-    // Check email validity
-    const emailInput = document.getElementById("email");
     if (!emailInput.checkValidity()) {
       emailInput.classList.add("invalid");
       emailInput.reportValidity();
@@ -51,20 +80,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (response.ok) {
         // Registrasi berhasil, arahkan ke login
-        alert("Registrasi berhasil! Silakan login.");
-        window.location.href = "/login.html";
+        Swal.fire({
+          // position: "top-end", // Removed to center the notification
+          icon: "success",
+          title: "Registrasi berhasil!",
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          window.location.href = "login.html"; // Updated path
+        });
       } else {
-        // Tampilkan pesan kesalahan
+        // Tampilkan pesan kesalahan menggunakan SweetAlert
         const errors = data.errors;
         if (errors && errors.length > 0) {
-          alert(errors.map((err) => err.msg).join("\n"));
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal Registrasi',
+            text: errors.map((err) => err.msg).join("\n")
+            // position: "center" // Optional: Explicitly set to center
+          });
         } else {
-          alert(data.msg || "Registrasi gagal");
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal Registrasi',
+            text: data.msg || "Registrasi gagal"
+            // position: "center" // Optional: Explicitly set to center
+          });
         }
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("Terjadi kesalahan saat registrasi");
+      // Replace alert with SweetAlert
+      Swal.fire({
+        icon: 'error',
+        title: 'Terjadi kesalahan',
+        text: "Terjadi kesalahan saat registrasi"
+        // position: "center" // Optional: Explicitly set to center
+      });
     }
   });
 
