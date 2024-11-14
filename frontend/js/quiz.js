@@ -27,6 +27,60 @@ const questions = [
     ],
   },
   // Add more sorting algorithm questions as needed
+  {
+    question: "Which sorting algorithm uses a divide and conquer approach?",
+    answers: [
+      { text: "Heap Sort", correct: false },
+      { text: "Quick Sort", correct: true },
+      { text: "Bubble Sort", correct: false },
+      { text: "Selection Sort", correct: false },
+    ],
+  },
+  {
+    question: "Which sorting algorithm has the worst-case time complexity of O(n²)?",
+    answers: [
+      { text: "Merge Sort", correct: false },
+      { text: "Quick Sort", correct: false },
+      { text: "Bubble Sort", correct: true },
+      { text: "Heap Sort", correct: false },
+    ],
+  },
+  {
+    question: "Which sorting algorithm is in-place and not stable?",
+    answers: [
+      { text: "Bubble Sort", correct: false },
+      { text: "Insertion Sort", correct: false },
+      { text: "Heap Sort", correct: true },
+      { text: "Merge Sort", correct: false },
+    ],
+  },
+  {
+    question: "Which sorting algorithm requires additional memory proportional to n?",
+    answers: [
+      { text: "Insertion Sort", correct: false },
+      { text: "Merge Sort", correct: true },
+      { text: "Heap Sort", correct: false },
+      { text: "Bubble Sort", correct: false },
+    ],
+  },
+  {
+    question: "Which sorting algorithm builds a binary heap from the input data?",
+    answers: [
+      { text: "Quick Sort", correct: false },
+      { text: "Heap Sort", correct: true },
+      { text: "Insertion Sort", correct: false },
+      { text: "Merge Sort", correct: false },
+    ],
+  },
+  {
+    question: "Which sorting algorithm repeatedly swaps adjacent elements if they are in the wrong order?",
+    answers: [
+      { text: "Merge Sort", correct: false },
+      { text: "Selection Sort", correct: false },
+      { text: "Bubble Sort", correct: true },
+      { text: "Heap Sort", correct: false },
+    ],
+  },
 ];
 
 let currentQuestionIndex = 0;
