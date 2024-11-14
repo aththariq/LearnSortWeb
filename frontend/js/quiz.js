@@ -41,10 +41,45 @@ const quizBox = document.getElementById("quiz-box");
 const lastScoreDisplay = document.getElementById("last-score");
 const lastAttemptDisplay = document.getElementById("last-attempt");
 const reattemptButton = document.getElementById("reattempt-button");
+const resultContainer = document.getElementById("result-container");
+
+// Add functions to save and load quiz state
+function saveQuizState() {
+  localStorage.setItem('currentQuestionIndex', currentQuestionIndex);
+  localStorage.setItem('score', score);
+}
+
+function loadQuizState() {
+  const savedIndex = localStorage.getItem('currentQuestionIndex');
+  const savedScore = localStorage.getItem('score');
+  if (savedIndex !== null && savedScore !== null) {
+    currentQuestionIndex = parseInt(savedIndex);
+    score = parseInt(savedScore);
+    scoreDisplay.innerText = `Score: ${score}`;
+    if (currentQuestionIndex < questions.length) {
+      showQuestion(questions[currentQuestionIndex]);
+      quizBox.style.display = "block";
+      startContainer.style.display = "none";
+    } else {
+      showResult();
+    }
+  } else {
+    startContainer.style.display = "block";
+    quizBox.style.display = "none";
+  }
+}
 
 function startQuiz() {
   startContainer.style.display = "none";
   quizBox.style.display = "block";
+  resultContainer.style.display = "none"; // Hide result-container
+  questionContainer.style.display = "block"; // Show question-container
+  answerButtons.style.display = "block"; // Ensure answer buttons are visible
+  currentQuestionIndex = 0; // Reset question index
+  score = 0; // Reset score
+  scoreDisplay.innerText = `Score: ${score}`;
+  localStorage.removeItem('currentQuestionIndex'); // Clear saved index
+  localStorage.removeItem('score'); // Clear saved score
   showQuestion(questions[currentQuestionIndex]);
 }
 
@@ -68,6 +103,7 @@ function selectAnswer(answer) {
   }
 
   currentQuestionIndex++;
+  saveQuizState(); // Save current state
 
   if (currentQuestionIndex < questions.length) {
     showQuestion(questions[currentQuestionIndex]);
@@ -77,10 +113,14 @@ function selectAnswer(answer) {
 }
 
 function showResult() {
-  questionContainer.innerText = "Quiz Completed!";
-  answerButtons.innerHTML = "";
-  reattemptButton.style.display = "block";
+  // Hide the question container and answer buttons
+  questionContainer.style.display = "none";
+  answerButtons.style.display = "none";
+  // Show the result container
+  resultContainer.style.display = "block";
   saveUserStats();
+  localStorage.removeItem('currentQuestionIndex'); // Clear saved index
+  localStorage.removeItem('score'); // Clear saved score
 }
 
 function saveUserStats() {
@@ -110,15 +150,18 @@ function displayUserStats() {
 startButton.addEventListener("click", startQuiz);
 
 reattemptButton.addEventListener("click", () => {
+  // Reset scores and indices
   currentQuestionIndex = 0;
   score = 0;
   scoreDisplay.innerText = `Score: ${score}`;
-  reattemptButton.style.display = "none";
+  // Hide result-container
+  resultContainer.style.display = "none";
+  // Show start-container and hide quiz-box
   startContainer.style.display = "block";
   quizBox.style.display = "none";
+  localStorage.removeItem('currentQuestionIndex'); // Clear saved index
+  localStorage.removeItem('score'); // Clear saved score
 });
-
-displayUserStats();
 
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
@@ -147,7 +190,7 @@ if (logoutBtn) {
               text: data.msg || "Logout berhasil.",
               confirmButtonText: "OK",
             }).then(() => {
-              window.location.href = "/login.html";
+              window.location.href = "/login.html"; 
             });
           })
           .catch((error) => {
@@ -164,3 +207,9 @@ if (logoutBtn) {
     });
   });
 }
+
+// Add event listener to load quiz state and display user stats on page load
+window.addEventListener('load', () => {
+  loadQuizState();
+  displayUserStats(); // Ensure user stats are displayed on load
+});

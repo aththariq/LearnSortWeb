@@ -1,7 +1,8 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  display: flex;
+  font-family: "Inter", sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  display: flex; /* Added to center content */
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -18,6 +19,10 @@ body {
   width: 300px;
 }
 
+.quiz-box {
+  display: none;
+}
+
 .quiz-box h1 {
   color: #333;
   margin-bottom: 20px;
@@ -31,14 +36,17 @@ body {
     margin-bottom: 20px;
 }
 
+/* Ensure .btn-container has correct flex properties */
 .btn-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
+/* Ensure .btn has padding to create space between buttons */
 .btn {
+  width: 100%; /* Make buttons take full width of the container */
   padding: 10px;
+  margin-bottom: 10px; /* Add margin-bottom to create space between buttons */
   border: none;
   border-radius: 5px;
   background-color: #4caf50;
@@ -65,7 +73,7 @@ body {
 }
 
 #result-container {
-  margin-top: 20px;
+  display: none;
 }
 
 #start-container {
@@ -115,12 +123,6 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-  font-family: "Inter", sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
 }
 
 :root {
