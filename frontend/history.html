@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz History</title>
+    <link rel="stylesheet" href="/LearnSortWeb/frontend/css/history.css" />
+  </head>
+  <body>
+    <header style="position: fixed">
+      <div class="logo">
+        <a href="main-page.html">
+          <img src="assets/images/logo.webp" alt="LearnSort Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="main-page.html">Home</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="history.html">History</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-info">
+        <span id="username-display"></span>
+        <img
+          src="assets/icon/Person.svg"
+          alt="User Profile Picture"
+          class="profile-pic"
+        />
+        <button id="logout-btn" class="btn-secondary">Logout</button>
+        <!-- Added logout button -->
+      </div>
+    </header>
+    <div class="history-container" id="history-container">
+      <h1>Quiz History</h1>
+    </div>
+    <script src="js/history.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/main-page.js"></script>
+  </body>
+</html>

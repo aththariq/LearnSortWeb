@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Page</title>
+    <link rel="stylesheet" href="/LearnSortWeb/frontend/css/quiz.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header style="position: fixed">
+      <div class="logo">
+        <a href="main-page.html">
+          <img src="assets/images/logo.webp" alt="LearnSort Logo" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="main-page.html">Home</a></li>
+          <li><a href="quiz.html">Quiz</a></li>
+          <li><a href="history.html">History</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-info">
+        <span id="username-display"></span>
+        <img
+          src="assets/icon/Person.svg"
+          alt="User Profile Picture"
+          class="profile-pic"
+        />
+        <button id="logout-btn" class="btn-secondary">Logout</button>
+        <!-- Added logout button -->
+      </div>
+    </header>
+    <div class="quiz-container">
+      <h1>Quiz</h1>
+      <div id="start-container">
+        <p id="last-score">Last Score: N/A</p>
+        <p id="last-attempt">Last Attempt: N/A</p>
+        <button id="start-button" class="btn-primary">Start Quiz</button>
+      </div>
+      <div id="quiz-box" class="quiz-box" style="display: none">
+        <div id="question-container">
+          <div id="question">Question text here...</div>
+          <div id="answer-buttons" class="btn-container">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+        </div>
+        <div id="result-container">
+          <p id="score">Score: 0</p>
+          <button id="reattempt-button" class="btn-primary" style="display: none;">Reattempt Quiz</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/quiz.js"></script>
+  </body>
+</html>
