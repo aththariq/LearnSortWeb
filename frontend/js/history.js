@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Fetch user status
-  fetch("https://learnsort-00d5721850fc.herokuapp.com/auth/status", {
+  fetch("https://learnsort-00d5721850fc.herokuapp.com/auth/status", { // Changed back to absolute URL
     method: "GET",
     credentials: "include",
   })
@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         confirmButtonText: 'Yes, logout'
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch("https://learnsort-00d5721850fc.herokuapp.com/auth/logout", {
+          fetch("https://learnsort-00d5721850fc.herokuapp.com/auth/logout", { // Changed to absolute URL
             method: "GET",
             credentials: "include",
           })
