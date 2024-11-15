@@ -10,19 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
   window.scrollTo(0, 0);
   const header = document.querySelector("header");
 
-  // Add a class to prevent initial transformation
   if (header) {
     header.classList.add("no-transform");
   }
 
-  // Remove the class after a short delay
   setTimeout(() => {
     if (header) {
       header.classList.remove("no-transform");
     }
   }, 100);
 
-  // Throttle function
   function throttle(func, limit) {
     let lastFunc;
     let lastRan;
@@ -44,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
   }
 
-  // Scroll event with throttle
   window.addEventListener(
     "scroll",
     throttle(function () {
@@ -58,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 100)
   );
 
-  // Check scroll position on load
   if (header) {
     if (window.scrollY > 50) {
       header.classList.add("scrolled");
@@ -67,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Duplicate images
   const scrollingWrapper = document.querySelector(".scrolling-wrapper");
   if (scrollingWrapper) {
     const images = Array.from(scrollingWrapper.children);
@@ -88,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function () {
     duplicateImages();
   }
 
-  // FAQ toggle
   document.querySelectorAll(".faq-question").forEach((item) => {
     item.addEventListener("click", (event) => {
       const faqItem = event.target.parentElement;
@@ -102,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Intersection Observers for animations
   const steps = document.querySelectorAll(".step");
   if (steps.length) {
     const stepObserver = new IntersectionObserver(
@@ -137,7 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
     memoObserver.observe(creatorMemo);
   }
 
-  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
@@ -152,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Button and form event listeners
   const getStartedButton = document.getElementById("GetStarted");
   if (getStartedButton) {
     getStartedButton.addEventListener("click", function () {

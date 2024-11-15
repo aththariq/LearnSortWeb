@@ -2,7 +2,7 @@ body {
   font-family: "Inter", sans-serif;
   background-color: #f9f9f9;
   color: #333;
-  display: flex; /* Added to center content */
+  display: flex; 
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -10,7 +10,7 @@ body {
 }
 
 .quiz-container {
-  margin-top: 80px; /* Adjust this value based on the header height */
+  margin-top: 80px; 
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
@@ -36,17 +36,15 @@ body {
     margin-bottom: 20px;
 }
 
-/* Ensure .btn-container has correct flex properties */
 .btn-container {
   display: flex;
   flex-direction: column;
 }
 
-/* Ensure .btn has padding to create space between buttons */
 .btn {
-  width: 100%; /* Make buttons take full width of the container */
+  width: 100%; 
   padding: 10px;
-  margin-bottom: 10px; /* Add margin-bottom to create space between buttons */
+  margin-bottom: 10px;
   border: none;
   border-radius: 5px;
   background-color: #4caf50;
@@ -245,7 +243,7 @@ header nav ul li a:hover {
 }
 
 .btn-primary::after {
-  content: "\f061"; /* Unicode for the arrow icon */
+  content: "\f061";
   font-family: "FontAwesome";
   font-size: 10px;
   margin-left: 8px;

@@ -1,21 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Log activity when a resource or lesson is accessed
 
-  // Select 'Learn' card links
+
   const lessonLinks = document.querySelectorAll(".lessons-grid .menu");
 
-  // Select 'Resource' card links
+  
   const resourceLinks = document.querySelectorAll(".resource-card a");
 
   lessonLinks.forEach(link => {
     link.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent default navigation
+      e.preventDefault(); 
 
       let activityName = this.querySelector(".lesson-card")?.textContent.trim() || "Learn Activity";
-      let xpGained = 12.5; // Fixed XP per activity
+      let xpGained = 12.5; 
 
       logUserActivity(activityName, xpGained).then(() => {
-        // After logging, navigate to the link
         window.location.href = this.href;
       });
     });
@@ -23,13 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   resourceLinks.forEach(link => {
     link.addEventListener("click", function (e) {
-      e.preventDefault(); // Prevent default navigation
+      e.preventDefault(); 
 
       let activityName = this.querySelector(".resource-title")?.textContent.trim() || "Resource";
-      let xpGained = 12.5; // Fixed XP per activity
+      let xpGained = 12.5; 
 
       logUserActivity(activityName, xpGained).then(() => {
-        // After logging, open the link in a new tab
         window.open(this.href, '_blank');
       });
     });
@@ -48,8 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const data = await response.json();
       console.log("Activity logged:", data);
-      // Optionally, update the UI immediately
-      updateProgressAndActivities(data.xp, data.recentActivities.slice(0, 4)); // Ensure only 4 activities
+      updateProgressAndActivities(data.xp, data.recentActivities.slice(0, 4)); 
     } catch (error) {
       console.error("Error logging activity:", error);
       Swal.fire({
@@ -62,12 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function updateProgressAndActivities(xp, activities) {
-    // Update the Doughnut Chart
     const ctx = document.getElementById("progress-chart").getContext("2d");
-    const progressPercentage = Math.min(xp, 100); // Cap at 100
+    const progressPercentage = Math.min(xp, 100); 
     const remaining = 100 - progressPercentage;
 
-    // Update existing chart
     if (window.progressChartInstance) {
       window.progressChartInstance.data.datasets[0].data = [progressPercentage, remaining];
       window.progressChartInstance.update();
@@ -97,12 +91,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Update progress text
     document.querySelector(".progress-text h2").textContent = `${progressPercentage}%`;
 
-    // Update Recent Activities
     const recentActivityDiv = document.querySelector(".recent-activity");
-    recentActivityDiv.innerHTML = ""; // Clear existing activities
+    recentActivityDiv.innerHTML = ""; 
 
     if (activities.length === 0) {
       recentActivityDiv.innerHTML = "<p>Belum ada aktivitas terbaru.</p>";

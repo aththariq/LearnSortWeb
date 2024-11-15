@@ -29,9 +29,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed; /* Changed from sticky to fixed */
+  position: fixed; 
   top: 0;
-  width: 100%; /* Ensure the header spans the full width */
+  width: 100%; 
   z-index: 1000;
   transition: background-color 0.3s ease, padding 0.3s ease,
     box-shadow 0.3s ease;
@@ -110,7 +110,7 @@ header nav ul li a:hover {
 .history-container {
   padding: 20px;
   max-width: 600px;
-  margin: 100px auto 0; /* Adjusted margin to account for fixed header */
+  margin: 100px auto 0;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

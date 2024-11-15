@@ -26,7 +26,6 @@ const questions = [
       { text: "Insertion Sort", correct: true },
     ],
   },
-  // Add more sorting algorithm questions as needed
   {
     question: "Which sorting algorithm uses a divide and conquer approach?",
     answers: [
@@ -97,7 +96,6 @@ const lastAttemptDisplay = document.getElementById("last-attempt");
 const reattemptButton = document.getElementById("reattempt-button");
 const resultContainer = document.getElementById("result-container");
 
-// Add functions to save and load quiz state
 function saveQuizState() {
   localStorage.setItem('currentQuestionIndex', currentQuestionIndex);
   localStorage.setItem('score', score);
@@ -126,20 +124,20 @@ function loadQuizState() {
 function startQuiz() {
   startContainer.style.display = "none";
   quizBox.style.display = "block";
-  resultContainer.style.display = "none"; // Hide result-container
-  questionContainer.style.display = "block"; // Show question-container
-  answerButtons.style.display = "block"; // Ensure answer buttons are visible
-  currentQuestionIndex = 0; // Reset question index
-  score = 0; // Reset score
+  resultContainer.style.display = "none"; 
+  questionContainer.style.display = "block"; 
+  answerButtons.style.display = "block"; 
+  currentQuestionIndex = 0; 
+  score = 0;
   scoreDisplay.innerText = `Score: ${score}`;
-  localStorage.removeItem('currentQuestionIndex'); // Clear saved index
-  localStorage.removeItem('score'); // Clear saved score
+  localStorage.removeItem('currentQuestionIndex');
+  localStorage.removeItem('score'); 
   showQuestion(questions[currentQuestionIndex]);
 }
 
 function showQuestion(question) {
   questionContainer.innerText = question.question;
-  answerButtons.innerHTML = ""; // Clear previous answer buttons
+  answerButtons.innerHTML = "";
 
   question.answers.forEach((answer) => {
     const button = document.createElement("button");
@@ -157,7 +155,7 @@ function selectAnswer(answer) {
   }
 
   currentQuestionIndex++;
-  saveQuizState(); // Save current state
+  saveQuizState(); 
 
   if (currentQuestionIndex < questions.length) {
     showQuestion(questions[currentQuestionIndex]);
@@ -167,14 +165,12 @@ function selectAnswer(answer) {
 }
 
 function showResult() {
-  // Hide the question container and answer buttons
   questionContainer.style.display = "none";
   answerButtons.style.display = "none";
-  // Show the result container
   resultContainer.style.display = "block";
   saveUserStats();
-  localStorage.removeItem('currentQuestionIndex'); // Clear saved index
-  localStorage.removeItem('score'); // Clear saved score
+  localStorage.removeItem('currentQuestionIndex');
+  localStorage.removeItem('score'); 
 }
 
 function saveUserStats() {
@@ -204,23 +200,19 @@ function displayUserStats() {
 startButton.addEventListener("click", startQuiz);
 
 reattemptButton.addEventListener("click", () => {
-  // Reset scores and indices
   currentQuestionIndex = 0;
   score = 0;
   scoreDisplay.innerText = `Score: ${score}`;
-  // Hide result-container
   resultContainer.style.display = "none";
-  // Show start-container and hide quiz-box
   startContainer.style.display = "block";
   quizBox.style.display = "none";
-  localStorage.removeItem('currentQuestionIndex'); // Clear saved index
-  localStorage.removeItem('score'); // Clear saved score
+  localStorage.removeItem('currentQuestionIndex');
+  localStorage.removeItem('score'); 
 });
 
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", function () {
-    // Confirm logout with SweetAlert2
     Swal.fire({
       title: "Are you sure?",
       text: "You will be logged out.",
@@ -237,7 +229,6 @@ if (logoutBtn) {
         })
           .then((response) => response.json())
           .then((data) => {
-            // Replace alert with SweetAlert2
             Swal.fire({
               icon: "success",
               title: "Logged Out",
@@ -249,7 +240,6 @@ if (logoutBtn) {
           })
           .catch((error) => {
             console.error("Error during logout:", error);
-            // Replace alert with SweetAlert2
             Swal.fire({
               icon: "error",
               title: "Error",
@@ -262,8 +252,7 @@ if (logoutBtn) {
   });
 }
 
-// Add event listener to load quiz state and display user stats on page load
 window.addEventListener('load', () => {
   loadQuizState();
-  displayUserStats(); // Ensure user stats are displayed on load
+  displayUserStats(); 
 });

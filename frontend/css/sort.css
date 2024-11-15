@@ -280,7 +280,7 @@ input[type="range"]::-ms-thumb {
   top: -50px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #2196F3; /* Blue background */
+  background-color: #2196F3;
   color: white;
   padding: 15px;
   font-size: 16px;

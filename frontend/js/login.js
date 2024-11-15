@@ -1,4 +1,3 @@
-// public/js/login.js
 document.addEventListener("DOMContentLoaded", function () {
   const loginForm = document.getElementById("login-form");
   const emailInput = document.getElementById("email");
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
-    // Get input values
     const email = emailInput.value;
     const password = passwordInput.value;
 
@@ -56,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (response.ok) {
         window.location.href = "/main-page.html";
       } else {
-        // Display error message below password
         passwordError.textContent = data.msg || "Invalid email or password";
         passwordInput.classList.add('error');
       }
@@ -66,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Live validation for email input
   emailInput.addEventListener('input', function () {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(emailInput.value)) {
@@ -78,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Live validation for password input
   passwordInput.addEventListener('input', function () {
     if (passwordInput.value.trim() === '') {
       passwordError.textContent = 'Password is required';

@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
         barWidth - 2,
         barHeight
       );
-      // Restore fillText to display numbers
       ctx.fillStyle = "#444";
       ctx.fillText(
         arr[i],
@@ -66,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Initialized array:", array);
     drawArray(array);
     if (saveInitial) {
-      initialArray = array.slice(); // Use slice() to copy the array
+      initialArray = array.slice(); 
     }
   }
 
@@ -74,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!sorting) {
       sorting = true;
       isPlaying = true;
-      paused = false; // Ensure paused is false when starting
+      paused = false; 
       playPauseButton.textContent = "⏸ Pause";
       resetClickCount = 0;
 
@@ -84,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
         await mergeSort();
       } else if (selectedAlgorithm === "quick") {
         await quickSort();
-      } else if (selectedAlgorithm === "heap") {
         await heapSort();
       }
 
@@ -92,11 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
       isPlaying = false;
       playPauseButton.textContent = "▶ Play";
     } else if (sorting && !paused) {
-      // Pause if sorting and not already paused
       paused = true;
       playPauseButton.textContent = "▶ Play";
     } else if (sorting && paused) {
-      // Resume if sorting and paused
       paused = false;
       playPauseButton.textContent = "⏸ Pause";
     }
@@ -108,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     do {
       swapped = false;
       for (let i = 0; i < array.length - 1; i++) {
-        if (!sorting) return; // Exit if sorting is stopped
+        if (!sorting) return; 
         if (paused) await waitWhilePaused();
         if (array[i] > array[i + 1]) {
           let temp = array[i];
@@ -125,13 +121,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Merge Sort Logic
   async function mergeSort(arr = array, l = 0, r = array.length - 1) {
-    if (!sorting) return; // Exit if sorting is stopped
+    if (!sorting) return;
     if (paused) await waitWhilePaused();
     if (l >= r) return;
 
     const m = Math.floor((l + r) / 2);
     await mergeSort(arr, l, m);
-    if (!sorting) return; // Exit after recursive call
+    if (!sorting) return;
     await merge(arr, l, m, r);
   }
 
@@ -160,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
       k++;
       drawArray(arr);
       await new Promise((resolve) => setTimeout(resolve, speed));
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
     }
 
     while (i < n1) {
@@ -170,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
       k++;
       drawArray(arr);
       await new Promise((resolve) => setTimeout(resolve, speed));
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
     }
 
     while (j < n2) {
@@ -180,19 +176,19 @@ document.addEventListener("DOMContentLoaded", function () {
       k++;
       drawArray(arr);
       await new Promise((resolve) => setTimeout(resolve, speed));
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
     }
   }
 
   // Quick Sort Logic
   async function quickSort(arr = array, left = 0, right = array.length - 1) {
-    if (!sorting) return; // Exit if sorting is stopped
+    if (!sorting) return; 
     if (paused) await waitWhilePaused();
     if (left >= right) return;
 
     let pivot = await partition(arr, left, right);
     await quickSort(arr, left, pivot - 1);
-    if (!sorting) return; // Exit after recursive call
+    if (!sorting) return; 
     await quickSort(arr, pivot + 1, right);
   }
 
@@ -209,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function () {
         arr[j] = temp;
         drawArray(arr);
         await new Promise((resolve) => setTimeout(resolve, speed));
-        if (!sorting) return; // Exit if sorting is stopped
+        if (!sorting) return; 
       }
     }
 
@@ -218,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
     arr[right] = temp;
     drawArray(arr);
     await new Promise((resolve) => setTimeout(resolve, speed));
-    if (!sorting) return; // Exit if sorting is stopped
+    if (!sorting) return; 
 
     return i + 1;
   }
@@ -228,27 +224,24 @@ document.addEventListener("DOMContentLoaded", function () {
     sorting = true;
     let n = array.length;
 
-    // Build heap (rearrange array)
     for (let i = Math.floor(n / 2) - 1; i >= 0 && sorting; i--) {
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return;
       if (paused) await waitWhilePaused();
       await heapify(array, n, i);
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
     }
 
     // One by one extract elements
     for (let i = n - 1; i >= 0 && sorting; i--) {
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
       if (paused) await waitWhilePaused();
-      // Swap current root with end
       [array[0], array[i]] = [array[i], array[0]];
       drawArray(array);
       await new Promise((resolve) => setTimeout(resolve, speed));
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
 
-      // Call max heapify on the reduced heap
       await heapify(array, i, 0);
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
     }
     sorting = false;
   }
@@ -270,29 +263,27 @@ document.addEventListener("DOMContentLoaded", function () {
       [arr[i], arr[largest]] = [arr[largest], arr[i]];
       drawArray(arr);
       await new Promise((resolve) => setTimeout(resolve, speed));
-      if (!sorting) return; // Exit if sorting is stopped
+      if (!sorting) return; 
       await heapify(arr, n, largest);
     }
   }
 
-  // Modify the dropdown link click handler to remove 'active' from 'dropdown' instead of 'dropdown-content'
   document.querySelectorAll(".dropdown-link").forEach(function (link) {
     link.addEventListener("click", function (e) {
       e.preventDefault();
       selectedAlgorithm = e.target.getAttribute("data-algorithm");
-      currentAlgorithm = e.target.getAttribute("data-algorithm") + "Sort"; // Ensure it matches the switch cases
+      currentAlgorithm = e.target.getAttribute("data-algorithm") + "Sort";
 
       document.getElementById("dropdown-text").textContent =
         e.target.textContent;
 
-      // Close the dropdown by removing 'active' from the parent '.dropdown' element
       dropdown.classList.remove("active");
       chevron.classList.remove("rotate");
     });
   });
 
   function showMenu() {
-    dropdown.classList.toggle("active"); // Toggle 'active' on dropdown
+    dropdown.classList.toggle("active"); 
     chevron.classList.toggle("rotate");
   }
 
@@ -302,27 +293,22 @@ document.addEventListener("DOMContentLoaded", function () {
     startSorting();
   });
 
-  // Event listener untuk reset button
   document
     .getElementById("reset-button")
     .addEventListener("click", async function () {
-      // Immediately stop any ongoing sorting
       sorting = false;
       paused = false;
       isPlaying = false;
 
-      // Wait a brief moment to ensure all sorting operations have stopped
       await new Promise((resolve) => setTimeout(resolve, 50));
 
       resetClickCount++;
 
-      // Set a timeout to reset the click counter
       const timeoutId = setTimeout(() => {
         resetClickCount = 0;
       }, 300);
 
       if (resetClickCount === 1) {
-        // Reset to the initial array
         console.log("Resetting to initial array.");
         array = initialArray.slice();
         drawArray(array);
@@ -331,32 +317,25 @@ document.addEventListener("DOMContentLoaded", function () {
           "Kembali ke initial array. Double click untuk menghasilkan array baru."
         );
       } else if (resetClickCount === 2) {
-        // Clear the timeout to prevent resetting resetClickCount
         clearTimeout(timeoutId);
 
-        // Generate completely new array
         console.log("Generating new array.");
 
-        // Generate new array with current size
         array = Array.from(
           { length: arraySize },
           () => Math.floor(Math.random() * 100) + 1
         );
 
-        // Update initial array
         initialArray = array.slice();
 
-        // Update display
         drawArray(array);
         playPauseButton.textContent = "▶ Play";
         showNotification("Array baru telah diinisialisasi.");
 
-        // Reset click counter immediately
         resetClickCount = 0;
       }
     });
 
-  // Slider untuk mengatur ukuran array
   document
     .getElementById("array-size-slider")
     .addEventListener("input", function (e) {
@@ -369,30 +348,23 @@ document.addEventListener("DOMContentLoaded", function () {
       resetClickCount = 0;
     });
 
-  // Slider untuk mengatur kecepatan sorting
   document
     .getElementById("speed-slider")
     .addEventListener("input", function (e) {
-      // Map the slider value (0.1 - 2) to the range of speed (2000 ms - 100 ms)
-      let maxSpeed = 100; // Kecepatan maksimal (lebih rendah lebih cepat)
-      let minSpeed = 2000; // Kecepatan minimal (lebih tinggi lebih lambat)
+      let maxSpeed = 100;
+      let minSpeed = 2000; 
 
-      // Correct formula to map the slider's min (0.1) to max (2) to speed range
       let sliderValue = parseFloat(e.target.value);
       speed =
         minSpeed - ((sliderValue - 0.1) / (2 - 0.1)) * (minSpeed - maxSpeed);
 
-      // Update speed label with the new calculated speed
       document.getElementById("speed-label").textContent = `${(
         speed / 1000
       ).toFixed(1)} sec/step`;
     });
 
-  // Inisialisasi array awal
-  initArray(arraySize, true); // Save the initial array
+  initArray(arraySize, true); 
 
-  // Ensure window click listener is inside DOMContentLoaded
-  // Modify the window click listener to remove 'active' from 'dropdown' instead of 'dropdown-content'
   window.onclick = function (event) {
     if (!event.target.closest(".dropdown-button")) {
       dropdown.classList.remove("active");
@@ -400,14 +372,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // Helper function to wait while paused
   async function waitWhilePaused() {
     return new Promise((resolve) => {
       const check = () => {
         if (!sorting || !paused) {
           resolve();
         } else {
-          setTimeout(check, 50); // Check more frequently
+          setTimeout(check, 50); 
         }
       };
       check();
@@ -419,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
     notification.classList.add("show");
     setTimeout(() => {
       notification.classList.remove("show");
-    }, 3000); // The notification will disappear after 3 seconds
+    }, 3000);
   }
   document
     .getElementById("explainButton")
@@ -444,10 +415,9 @@ document.addEventListener("DOMContentLoaded", function () {
             "Berikan penjelasan mendetail tentang proses pengurutan yang terjadi di kanvas tanpa contoh kode.";
       }
 
-      // Hide the explanation div before loading new content
       const explanationDiv = document.getElementById("explanation");
       explanationDiv.classList.remove("visible");
-      explanationDiv.innerHTML = ""; // Clear previous content
+      explanationDiv.innerHTML = "";
 
       try {
         showNotification("Loading explanation...");
@@ -485,7 +455,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const sanitizedContent = DOMPurify.sanitize(htmlContent);
         explanationDiv.innerHTML = sanitizedContent;
 
-        // Add the 'visible' class to trigger CSS animation
         explanationDiv.classList.add("visible");
 
         showNotification("Explanation loaded successfully.");
